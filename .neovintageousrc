@@ -1,0 +1,100 @@
+" A double quote character starts a comment.
+
+nnoremap <space><space> :ShowOverlay overlay=command_palette<CR>
+nnoremap <space>ff :MyHelm<CR>
+nnoremap <space>/ :ShowPanel panel=find_in_files<CR>
+
+" Toggles
+nnoremap <space>ts :ToggleStatusBar<CR>
+nnoremap <space>tn :ToggleSetting setting=line_numbers<CR>
+nnoremap <space>tm :ToggleMinimap<CR>
+nnoremap <space>tM :ToggleMenu<CR>
+nnoremap <space>tt :ToggleTabs<CR>
+
+" Panel create
+nnoremap <space>wv :CreatePane direction=right give_focus=true<CR>
+nnoremap <space>w/ :CreatePane direction=right give_focus=true<CR>
+nnoremap <space>ws :CreatePane direction=down give_focus=true<CR>
+nnoremap <space>w- :CreatePane direction=down give_focus=true<CR>
+nnoremap <space>wc :DestroyPane direction=self<CR>
+
+" Panel move
+nnoremap <space>wH :CarryFileToPane direction=left<CR>
+nnoremap <space>wJ :CarryFileToPane direction=down<CR>
+nnoremap <space>wK :CarryFileToPane direction=up<CR>
+nnoremap <space>wL :CarryFileToPane direction=right<CR>
+
+" Panel navigation
+nnoremap <space>0 :FocusSideBar<CR>
+nnoremap <space>1 :FocusGroup group=0<CR>
+nnoremap <space>2 :FocusGroup group=1<CR>
+nnoremap <space>3 :FocusGroup group=2<CR>
+nnoremap <space>4 :FocusGroup group=3<CR>
+nnoremap <space>5 :FocusGroup group=4<CR>
+nnoremap <space>6 :FocusGroup group=5<CR>
+nnoremap <space>7 :FocusGroup group=6<CR>
+nnoremap <space>8 :FocusGroup group=7<CR>
+nnoremap <space>9 :FocusGroup group=8<CR> 
+nnoremap <space>w<left> :TravelToPane direction=left<CR>
+nnoremap <space>w<down> :TravelToPane direction=down<CR>
+nnoremap <space>w<up> :TravelToPane direction=up<CR>
+nnoremap <space>w<right> :TravelToPane direction=right<CR>
+nnoremap <space>wh :TravelToPane direction=left<CR>
+nnoremap <space>wj :TravelToPane direction=down<CR>
+nnoremap <space>wk :TravelToPane direction=up<CR>
+nnoremap <space>wl :TravelToPane direction=right<CR>
+
+" Buffer
+nnoremap <space>bn :NextViewInStack<CR>
+nnoremap <space>bp :PrevViewInStack<CR>
+nnoremap <space>bh :NextView<CR>
+nnoremap <space>bl :PrevView<CR>
+nnoremap <space>b<left> :NextView<CR>
+nnoremap <space>b<right> :PrevView<CR>
+nnoremap <space>bN :NewFile<CR>
+nnoremap <space>bm :AdvancedNewFileMove<CR>
+nnoremap <space>bb :ExtendedSwitcher list_mode=window<CR>
+nnoremap <space>bc :Close<CR>
+nnoremap <space>bC :CloseOthers<CR>
+nnoremap <space>bK :CloseOthers<CR>
+
+" OS tabs
+nnoremap <space>ln :NextOsTab<CR>
+nnoremap <space>lp :PrevOsTab<CR>
+nnoremap <space>lN :NewOsTab<CR>
+nnoremap <space>lc :Close<CR>
+
+" Project commands
+nnoremap <space>pf :ShowOverlay overlay=goto show_files=true<CR>
+nnoremap <space>pt :ToggleSideBar <CR>
+nnoremap <space>pc :AdvancedNewFileNew<CR>
+nnoremap <space>pR :RevealInSideBar <CR>
+nnoremap <space>ps :ShowPanel panel=find_in_files<CR>
+nnoremap <space>pp :PromptSelectWorkspace<CR>
+
+" Ace jump
+nnoremap <space>jj :AceJumpChar<CR>
+nnoremap <space>jw :AceJumpWord<CR>
+nnoremap <space>jl :AceJumpLine<CR>
+
+" Folds 
+nnoremap zr :UnfoldAll<CR>
+nnoremap zm :FoldByLevel level=1<CR>
+
+" Clojure Sublimed
+" noremap ,sj:ClojureSublimedConnectNreplJvm address=auto<CR>
+noremap FileType clj, cljs, cljc, bb, edn ,ee : ClojureSublimedEval<CR>
+nnoremap FileType clj, cljs, cljc, bb, edn ,eb : ClojureSublimedEvalBuffer<CR>
+nnoremap FileType clj, cljs, cljc, bb, edn ,ec : ClojureSublimedclearEvals<CR>
+nnoremap FileType clj, cljs, cljc, bb, edn ,eC : ClojureSublimedInterruptEval<CR>
+nnoremap FileType clj, cljs, cljc,bb, edn ,Ti :ClojureSublimedToggleInfo<CR>
+nnoremap FileType clj, cljs, cljc, bb, edn ,Te :ClojureSublimedToggleTrace<CR>
+nnoremap FileType clj, cljs, cljc, bb, edn ,Td :ClojureSublimedToggleSymbol<CR>
+nnoremap FileType clj, cljs, cljc, bb, edn ,y :ClojureSublimedCopy<CR>
+nnoremap FileType clj, cljs, cljc, bb, edn ,= ClojureSublimedReindentLines<CR>
+nnoremap FileType clj, cljs, cljc, bb, edn ,=r :ClojureSublimedReindentLines<CR>
+nnoremap Filelype clj, cljs, cljc, bb, edn ,=b :ClojureSublimedReindentBuffer<CR>
+nnoremap FileType clj, cljs, cljc, bb, edn o A:ClojureSublimedInsertNewline<CR>
+nnoremap FileType clj, cljs, cljc, bb, edn O kA: ClojureSublimedInsertNewline<CR>
+nnoremap FileType clj, cljs, cljc,bb, edn ,ta :ClojureSublimedEvalCode code='(clojure.test/run-all-tests)'<CR>
+nnoremap FileType clj, cljs, cljc, bb, edn ,tn :ClojureSublimedEvalCode code='(clojure.test/run-tests)'<CR>
