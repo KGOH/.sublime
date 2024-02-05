@@ -16,73 +16,73 @@
 
 //,{"keys": [" ", "m"], "command"   : "sss",
 //  "context": [{"key": "my_vi_normal_mode"}]}
-
-,{"keys": ["("], "command": "paredit_open_round"
- ,"context": [{"key": "should_paredit"}, {"key": "vi_insert_mode_aware"}]}
-,{"keys": [")"], "command": "paredit_close_round"
- ,"context": [{"key": "should_paredit"}, {"key": "vi_insert_mode_aware"}]}
-,{"keys": ["["], "command": "paredit_open_square"
- ,"context": [{"key": "should_paredit"}, {"key": "vi_insert_mode_aware"}]}
-,{"keys": ["]"], "command": "paredit_close_square"
- ,"context": [{"key": "should_paredit"}, {"key": "vi_insert_mode_aware"}]}
-,{"keys": ["{"], "command": "paredit_open_curly"
- ,"context": [{"key": "should_paredit"}, {"key": "vi_insert_mode_aware"}]}
-,{"keys": ["}"], "command": "paredit_close_curly"
- ,"context": [{"key": "should_paredit"}, {"key": "vi_insert_mode_aware"}]}
-,{"keys": ["\""], "command": "paredit_doublequote"
- ,"context": [{"key": "should_paredit"}, {"key": "vi_insert_mode_aware"}]}
-//,{
-//  "keys": ["ctrl+j"],
-//  "command": "paredit_newline",
-//  "context": [{"key": "should_paredit"}]
-// }
-
-//// Deleting & killing
-,{"keys": ["delete"], "command": "paredit_forward_delete"
- ,"context": [{"key": "should_paredit"}, {"key": "vi_insert_mode_aware"}]}
-,{"keys": ["backspace"], "command": "paredit_backward_delete"
- ,"context": [{"key": "should_paredit"}, {"key": "vi_insert_mode_aware"}]}
-,{"keys": ["ctrl+k"], "command": "paredit_kill"
- ,"context": [{"key": "should_paredit"}, {"key": "vi_insert_mode_aware"}]}
-,{"keys": ["D"], "command": "paredit_kill"
- ,"context": [{"key": "should_paredit"}, {"key": "my_vi_normal_mode"}]}
-,{"keys": [" ", "k", "d", "x"], "command": "paredit_kill_expression"
- ,"context": [{"key": "should_paredit"}, {"key": "my_vi_normal_mode"}]}
-,{"keys": [" ", "k", "d", "w"], "command": "paredit_forward_kill_word"
- ,"context": [{"key": "should_paredit"}, {"key": "my_vi_normal_mode"}]}
-,{"keys": [" ", "k", "d", "W"], "command": "paredit_backward_kill_word"
- ,"context": [{"key": "should_paredit"}, {"key": "my_vi_normal_mode"}]}
-
-//// Depth-changing commands
-,{"keys": [" ", "k", "w", "w"], "command": "paredit_wrap_round"
- ,"context": [{"key": "should_paredit"}, {"key": "my_vi_normal_mode"}]}
-,{"keys": [" ", "k", "w", "("], "command": "paredit_wrap_round"
- ,"context": [{"key": "should_paredit"}, {"key": "my_vi_normal_mode"}]}
-,{"keys": [" ", "k", "w", "["], "command": "paredit_wrap_square"
- ,"context": [{"key": "should_paredit"}, {"key": "my_vi_normal_mode"}]}
-,{"keys": [" ", "k", "w", "{"], "command": "paredit_wrap_curly"
- ,"context": [{"key": "should_paredit"}, {"key": "my_vi_normal_mode"}]}
-,{"keys": [" ", "k", "w", "\""], "command": "paredit_meta_doublequote"
- ,"context": [{"key": "should_paredit"}, {"key": "my_vi_normal_mode"}]}
-,{"keys": [" ", "k", "W"], "command": "paredit_splice_sexp"
- ,"context": [{"key": "should_paredit"}, {"key": "my_vi_normal_mode"}]}
-
-//// Barfage & slurpage
-,{"keys": [" ", "k", "s"], "command": "paredit_forward_slurp_sexp"
- ,"context": [{"key": "should_paredit"}, {"key": "my_vi_normal_mode"}]}
-,{"keys": [" ", "k", "b"], "command": "paredit_forward_barf_sexp"
- ,"context": [{"key": "should_paredit"}, {"key": "my_vi_normal_mode"}]}
-,{"keys": [" ", "k", "S"], "command": "paredit_backward_slurp_sexp"
- ,"context": [{"key": "should_paredit"}, {"key": "my_vi_normal_mode"}]}
-,{"keys": [" ", "k", "B"], "command": "paredit_backward_barf_sexp"
- ,"context": [{"key": "should_paredit"}, {"key": "my_vi_normal_mode"}]}
-
-//// Miscellaneous commands
-,{"keys": [" ", "k", "f"], "command": "paredit_split_sexp"
- ,"context": [{"key": "should_paredit"}, {"key": "my_vi_normal_mode"}]}
-,{"keys": [" ", "k", "j"], "command": "paredit_join_sexp"
- ,"context": [{"key": "should_paredit"}, {"key": "my_vi_normal_mode"}]}
-
+////  
+////  ,{"keys": ["("], "command": "paredit_open_round"
+////   ,"context": [{"key": "should_paredit"}, {"key": "vi_insert_mode_aware"}]}
+////  ,{"keys": [")"], "command": "paredit_close_round"
+////   ,"context": [{"key": "should_paredit"}, {"key": "vi_insert_mode_aware"}]}
+////  ,{"keys": ["["], "command": "paredit_open_square"
+////   ,"context": [{"key": "should_paredit"}, {"key": "vi_insert_mode_aware"}]}
+////  ,{"keys": ["]"], "command": "paredit_close_square"
+////   ,"context": [{"key": "should_paredit"}, {"key": "vi_insert_mode_aware"}]}
+////  ,{"keys": ["{"], "command": "paredit_open_curly"
+////   ,"context": [{"key": "should_paredit"}, {"key": "vi_insert_mode_aware"}]}
+////  ,{"keys": ["}"], "command": "paredit_close_curly"
+////   ,"context": [{"key": "should_paredit"}, {"key": "vi_insert_mode_aware"}]}
+////  ,{"keys": ["\""], "command": "paredit_doublequote"
+////   ,"context": [{"key": "should_paredit"}, {"key": "vi_insert_mode_aware"}]}
+////  //,{
+////  //  "keys": ["ctrl+j"],
+////  //  "command": "paredit_newline",
+////  //  "context": [{"key": "should_paredit"}]
+////  // }
+////  
+////  //// Deleting & killing
+////  ,{"keys": ["delete"], "command": "paredit_forward_delete"
+////   ,"context": [{"key": "should_paredit"}, {"key": "vi_insert_mode_aware"}]}
+////  ,{"keys": ["backspace"], "command": "paredit_backward_delete"
+////   ,"context": [{"key": "should_paredit"}, {"key": "vi_insert_mode_aware"}]}
+////  ,{"keys": ["ctrl+k"], "command": "paredit_kill"
+////   ,"context": [{"key": "should_paredit"}, {"key": "vi_insert_mode_aware"}]}
+////  ,{"keys": ["D"], "command": "paredit_kill"
+////   ,"context": [{"key": "should_paredit"}, {"key": "my_vi_normal_mode"}]}
+////  ,{"keys": [" ", "k", "d", "x"], "command": "paredit_kill_expression"
+////   ,"context": [{"key": "should_paredit"}, {"key": "my_vi_normal_mode"}]}
+////  ,{"keys": [" ", "k", "d", "w"], "command": "paredit_forward_kill_word"
+////   ,"context": [{"key": "should_paredit"}, {"key": "my_vi_normal_mode"}]}
+////  ,{"keys": [" ", "k", "d", "W"], "command": "paredit_backward_kill_word"
+////   ,"context": [{"key": "should_paredit"}, {"key": "my_vi_normal_mode"}]}
+////  
+////  //// Depth-changing commands
+////  ,{"keys": [" ", "k", "w", "w"], "command": "paredit_wrap_round"
+////   ,"context": [{"key": "should_paredit"}, {"key": "my_vi_normal_mode"}]}
+////  ,{"keys": [" ", "k", "w", "("], "command": "paredit_wrap_round"
+////   ,"context": [{"key": "should_paredit"}, {"key": "my_vi_normal_mode"}]}
+////  ,{"keys": [" ", "k", "w", "["], "command": "paredit_wrap_square"
+////   ,"context": [{"key": "should_paredit"}, {"key": "my_vi_normal_mode"}]}
+////  ,{"keys": [" ", "k", "w", "{"], "command": "paredit_wrap_curly"
+////   ,"context": [{"key": "should_paredit"}, {"key": "my_vi_normal_mode"}]}
+////  ,{"keys": [" ", "k", "w", "\""], "command": "paredit_meta_doublequote"
+////   ,"context": [{"key": "should_paredit"}, {"key": "my_vi_normal_mode"}]}
+////  ,{"keys": [" ", "k", "W"], "command": "paredit_splice_sexp"
+////   ,"context": [{"key": "should_paredit"}, {"key": "my_vi_normal_mode"}]}
+////  
+////  //// Barfage & slurpage
+////  ,{"keys": [" ", "k", "s"], "command": "paredit_forward_slurp_sexp"
+////   ,"context": [{"key": "should_paredit"}, {"key": "my_vi_normal_mode"}]}
+////  ,{"keys": [" ", "k", "b"], "command": "paredit_forward_barf_sexp"
+////   ,"context": [{"key": "should_paredit"}, {"key": "my_vi_normal_mode"}]}
+////  ,{"keys": [" ", "k", "S"], "command": "paredit_backward_slurp_sexp"
+////   ,"context": [{"key": "should_paredit"}, {"key": "my_vi_normal_mode"}]}
+////  ,{"keys": [" ", "k", "B"], "command": "paredit_backward_barf_sexp"
+////   ,"context": [{"key": "should_paredit"}, {"key": "my_vi_normal_mode"}]}
+////  
+////  //// Miscellaneous commands
+////  ,{"keys": [" ", "k", "f"], "command": "paredit_split_sexp"
+////   ,"context": [{"key": "should_paredit"}, {"key": "my_vi_normal_mode"}]}
+////  ,{"keys": [" ", "k", "j"], "command": "paredit_join_sexp"
+////   ,"context": [{"key": "should_paredit"}, {"key": "my_vi_normal_mode"}]}
+////  
 //// Movement & navigation 
 //,{
 //  "keys": ["ctrl+alt+f"],
