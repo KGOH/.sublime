@@ -1,0 +1,4 @@
+// Clojure Sublimed Settings - User
+{ 
+    "eval_shared": "(do (set! *warn-on-reflection* true) (set! *print-namespace-maps* false))"    
+}

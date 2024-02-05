@@ -1,0 +1,19 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"AceJump",
+		"AdvancedNewFile",
+		"Clojure Sublimed",
+		"Monochrome Color Schemes",
+		"NeoVintageous",
+		"NeoVintageousToggle",
+		"Origami",
+		"Package Control",
+		"PackageResourceViewer",
+		"paredit",
+	],
+}
