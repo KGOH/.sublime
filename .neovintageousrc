@@ -47,8 +47,8 @@ nnoremap <space>wl :TravelToPane direction=right<CR>
 " Buffer
 nnoremap <space>bn :NextViewInStack<CR>
 nnoremap <space>bp :PrevViewInStack<CR>
-nnoremap <space>bh :NextView<CR>
-nnoremap <space>bl :PrevView<CR>
+nnoremap <space>bh :PrevView<CR>
+nnoremap <space>bl :NextView<CR>
 nnoremap <space>b<left> :NextView<CR>
 nnoremap <space>b<right> :PrevView<CR>
 nnoremap <space>bN :NewFile<CR>
