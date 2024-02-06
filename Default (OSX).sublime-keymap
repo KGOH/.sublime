@@ -18,8 +18,7 @@
   ,{"key": "panel_has_focus", "operator": "equal", "operand": false}]}
 
 ,{"keys": [" ", "p", "t"],
-  "command": "neovintageous",
-  "args": {"action": "toggle_side_bar"},
+  "command": "toggle_sidebar_and_focus",
   "context": [{"key": "control", "operand": "sidebar_tree"}]}
 
 //,{"keys": [" ", "m"], "command"   : "sss",

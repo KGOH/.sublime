@@ -64,9 +64,9 @@ nnoremap <space>lc :Close<CR>
 
 " Project commands
 nnoremap <space>pf :ShowOverlay overlay=goto show_files=true<CR>
-nnoremap <space>pt :ToggleSideBar <CR>
+nnoremap <space>pt :ToggleSidebarAndFocus<CR>
 nnoremap <space>pc :AdvancedNewFileNew<CR>
-nnoremap <space>pR :RevealInSideBar <CR>
+nnoremap <space>pR :RevealInSideBar<CR>
 nnoremap <space>ps :ShowPanel panel=find_in_files<CR>
 nnoremap <space>pp :PromptSelectWorkspace<CR>
 
