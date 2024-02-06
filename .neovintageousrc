@@ -1,6 +1,6 @@
 " A double quote character starts a comment.
 
-nnoremap <space><space> :ShowOverlay overlay=command_palette<CR>
+" nnoremap <space><space> :ShowOverlay overlay=command_palette<CR>
 nnoremap <space>ff :MyHelm<CR>
 nnoremap <space>/ :ShowPanel panel=find_in_files<CR>
 
@@ -35,14 +35,14 @@ nnoremap <space>6 :FocusGroup group=5<CR>
 nnoremap <space>7 :FocusGroup group=6<CR>
 nnoremap <space>8 :FocusGroup group=7<CR>
 nnoremap <space>9 :FocusGroup group=8<CR> 
-nnoremap <space>w<left> :TravelToPane direction=left<CR>
-nnoremap <space>w<down> :TravelToPane direction=down<CR>
-nnoremap <space>w<up> :TravelToPane direction=up<CR>
-nnoremap <space>w<right> :TravelToPane direction=right<CR>
-nnoremap <space>wh :TravelToPane direction=left<CR>
-nnoremap <space>wj :TravelToPane direction=down<CR>
-nnoremap <space>wk :TravelToPane direction=up<CR>
-nnoremap <space>wl :TravelToPane direction=right<CR>
+nnoremap <space>w<left> :NvViCtrlW action=h<CR>
+nnoremap <space>w<down> :NvViCtrlW action=j<CR>
+nnoremap <space>w<up> :NvViCtrlW action=kR>
+nnoremap <space>w<right> :NvViCtrlW action=l<CR>
+nnoremap <space>wh :NvViCtrlW action=h<CR>
+nnoremap <space>wj :NvViCtrlW action=j<CR>
+nnoremap <space>wk :NvViCtrlW action=k<CR>
+nnoremap <space>wl :NvViCtrlW action=l<CR>
 
 " Buffer
 nnoremap <space>bn :NextViewInStack<CR>
@@ -54,9 +54,7 @@ nnoremap <space>b<right> :PrevView<CR>
 nnoremap <space>bN :NewFile<CR>
 nnoremap <space>bm :AdvancedNewFileMove<CR>
 nnoremap <space>bb :ExtendedSwitcher list_mode=window<CR>
-nnoremap <space>bc :Close<CR>
-nnoremap <space>bC :CloseOthers<CR>
-nnoremap <space>bK :CloseOthers<CR>
+nnoremap <space>bc :CloseFile<CR>
 
 " OS tabs
 nnoremap <space>ln :NextOsTab<CR>

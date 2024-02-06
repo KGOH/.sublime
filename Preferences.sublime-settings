@@ -6,6 +6,7 @@
 	"theme": "Adaptive.sublime-theme",
 	"font_face": "Iosevka",
 	"font_size": 15,
+	//"executor_output_view": true,
 
 	"create_window_at_startup": false,
 	"native_tabs": "preferred",
@@ -27,7 +28,7 @@
 	"margin": 0,
 	"always_show_minimap_viewport": true,
 
-	"goto_anything_exclude_gitignore": false,
+	"goto_anything_exclude_gitignore": true,
 	
 	"neovintageous_build_version": 13204,
 	"vintage_ctrl_keys": true,
@@ -44,5 +45,5 @@
     "vintageous_handle_keys": {
     },
 	"index_files": true,
-	"color_scheme": "Packages/Monochrome Color Schemes/daVinci.tmTheme",
+	"color_scheme": "Alabaster Mono.sublime-color-scheme",
 }

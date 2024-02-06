@@ -1,6 +1,14 @@
 [ // see .neovintageousrc
+ {"keys":    [" ", " "],
+  "command": "show_overlay",
+  "args":    {"overlay": "command_palette"},
+  "context": [{"key": "my_vi_normal_mode"}]}
+,{"keys":    [" ", "e", "s"],
+  "command": "executor_execute_shell",
+  "args":    {"command": "echo 123", "dir": "~/"},
+  "context": [{"key": "my_vi_normal_mode"}]}
 
- {"keys": ["enter"], "command": "clojure_sublimed_insert_newline",
+,{"keys": ["enter"], "command": "clojure_sublimed_insert_newline",
   "context":
   [{"key": "vi_insert_mode_aware"}
   ,{"key": "selector",
