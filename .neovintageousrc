@@ -60,7 +60,7 @@ nnoremap <space>bc :CloseFile<CR>
 nnoremap <space>ln :NextOsTab<CR>
 nnoremap <space>lp :PrevOsTab<CR>
 nnoremap <space>lN :NewOsTab<CR>
-nnoremap <space>lc :Close<CR>
+nnoremap <space>lc :CloseWindow<CR>
 
 " Project commands
 nnoremap <space>pf :ShowOverlay overlay=goto show_files=true<CR>
@@ -68,7 +68,9 @@ nnoremap <space>pt :ToggleSidebarAndFocus<CR>
 nnoremap <space>pc :AdvancedNewFileNew<CR>
 nnoremap <space>pR :RevealInSideBar<CR>
 nnoremap <space>ps :ShowPanel panel=find_in_files<CR>
-nnoremap <space>pp :PromptSelectWorkspace<CR>
+"nnoremap <space>pp :PromptSelectWorkspace<CR>
+nnoremap <space>pl :MyOpenProject<CR>
+nnoremap <space>pp :MyOpenProject<CR>
 
 " Ace jump
 nnoremap <space>jj :AceJumpChar<CR>
