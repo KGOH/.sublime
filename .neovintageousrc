@@ -1,6 +1,6 @@
 " A double quote character starts a comment.
 
-" nnoremap <space><space> :ShowOverlay overlay=command_palette<CR>
+nnoremap <space><space> :ShowOverlay overlay=command_palette<CR>
 nnoremap <space>ff :MyHelm<CR>
 nnoremap <space>/ :ShowPanel panel=find_in_files<CR>
 
@@ -55,6 +55,7 @@ nnoremap <space>bN :NewFile<CR>
 nnoremap <space>bm :AdvancedNewFileMove<CR>
 nnoremap <space>bb :ExtendedSwitcher list_mode=window<CR>
 nnoremap <space>bc :CloseFile<CR>
+nnoremap <space>by :CopyPath<CR>
 
 " OS tabs
 nnoremap <space>ln :NextOsTab<CR>
@@ -81,9 +82,15 @@ nnoremap <space>jl :AceJumpLine<CR>
 nnoremap zr :UnfoldAll<CR>
 nnoremap zm :FoldByLevel level=1<CR>
 
+" Paredit
+noremap FileType clj,cljs,cljc,bb,edn o A:ClojureSublimedInsertNewline<CR>
+
 " Clojure Sublimed
 " nnoremap ,sj :ClojureSublimedConnectSocketRepl address=auto<CR>
 " "
+"inoremap FileType clj,cljs,cljc,bb,edn enter :ClojureSublimedInsertNewline<CR>
+
+nnoremap ,sR :ExecutorExecuteShell command='/opt/homebrew/bin/clojure  -X clojure.core.server/start-server :name repl :port 5555 :accept clojure.core.server/repl :server-daemon false'<CR>
 noremap FileType clj,cljs,cljc,bb,edn o A:ClojureSublimedInsertNewline<CR>
 noremap FileType clj,cljs,cljc,bb,edn O kA: ClojureSublimedInsertNewline<CR>
 
@@ -104,3 +111,32 @@ nnoremap FileType clj,cljs,cljc,bb,edn ,=b :ClojureSublimedReindentBuffer<CR>
 
 nnoremap FileType clj,cljs,cljc,bb,edn ,ta :ClojureSublimedEvalCode code='(clojure.test/run-all-tests)'<CR>
 nnoremap FileType clj,cljs,cljc,bb,edn ,tn :ClojureSublimedEvalCode code='(clojure.test/run-tests)'<CR>
+
+
+" Paredit
+"inoremap FileType clj,cljs,cljc,bb,edn ( :PareditOpenRound<CR>
+"inoremap FileType clj,cljs,cljc,bb,edn ) :PareditCloseRound<CR>
+"inoremap FileType clj,cljs,cljc,bb,edn [ :PareditOpenSquare<CR>
+"inoremap FileType clj,cljs,cljc,bb,edn ] :PareditCloseSquare<CR>
+"inoremap FileType clj,cljs,cljc,bb,edn { :PareditOpenCurly<CR>
+"inoremap FileType clj,cljs,cljc,bb,edn } :PareditCloseCurly<CR>
+"inoremap FileType clj,cljs,cljc,bb,edn " :PareditDoublequote<CR>
+"inoremap FileType clj,cljs,cljc,bb,edn <del> :PareditForwardDelete<CR>
+"inoremap FileType clj,cljs,cljc,bb,edn <BS> :PareditBackwardDelete<CR>
+"inoremap FileType clj,cljs,cljc,bb,edn C-k :PareditKill<CR>
+nnoremap FileType clj,cljs,cljc,bb,edn S-d :PareditKill<CR>
+nnoremap FileType clj,cljs,cljc,bb,edn <space>kdx :PareditKillExpression<CR>
+nnoremap FileType clj,cljs,cljc,bb,edn <space>kdw :PareditForwardKillWord<CR>
+nnoremap FileType clj,cljs,cljc,bb,edn <space>kdW :PareditBackwardKillWord<CR>
+noremap FileType clj,cljs,cljc,bb,edn <space>kww :PareditWrapRound<CR>
+noremap FileType clj,cljs,cljc,bb,edn <space>kw( :PareditWrapRound<CR>
+noremap FileType clj,cljs,cljc,bb,edn <space>kw[ :PareditWrapSquare<CR>
+noremap FileType clj,cljs,cljc,bb,edn <space>kw{ :PareditWrapCurly<CR>
+noremap FileType clj,cljs,cljc,bb,edn <space>kw" :PareditMetaDoublequote<CR>
+nnoremap FileType clj,cljs,cljc,bb,edn <space>kW :PareditSpliceSexp<CR>
+nnoremap FileType clj,cljs,cljc,bb,edn <space>ks :PareditForwardSlurpSexp<CR>
+nnoremap FileType clj,cljs,cljc,bb,edn <space>kb :PareditForwardBarfSexp<CR>
+nnoremap FileType clj,cljs,cljc,bb,edn <space>kS :PareditBackwardSlurpSexp<CR>
+nnoremap FileType clj,cljs,cljc,bb,edn <space>kB :PareditBackwardBarfSexp<CR>
+nnoremap FileType clj,cljs,cljc,bb,edn <space>kf :PareditSplitSexp<CR>
+nnoremap FileType clj,cljs,cljc,bb,edn <space>kj :PareditJoinSexp<CR>
