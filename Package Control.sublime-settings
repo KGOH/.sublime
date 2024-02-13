@@ -22,4 +22,8 @@
 		"paredit",
 		"Toggle Sidebar Focus",
 	],
+	"repositories":
+	[
+		"https://github.com/NeoVintageous/NeoVintageous.git",
+	],
 }

@@ -1,6 +1,6 @@
 " A double quote character starts a comment.
 
-nnoremap <space><space> :ShowOverlay overlay=command_palette<CR>
+noremap <space><space> :ShowOverlay overlay=command_palette<CR>
 nnoremap <space>ff :MyHelm<CR>
 nnoremap <space>/ :ShowPanel panel=find_in_files<CR>
 
@@ -82,6 +82,20 @@ nnoremap <space>jl :AceJumpLine<CR>
 nnoremap zr :UnfoldAll<CR>
 nnoremap zm :FoldByLevel level=1<CR>
 
+" Jump to paren
+nnoremap ( :NvViLeftSquareBracket action=target mode=mode_normal target='('<CR>
+vnoremap ( :NvViLeftSquareBracket action=target mode=mode_visual target='('<CR>
+nnoremap ) :NvViRightSquareBracket action=target mode=mode_normal target=')'<CR>
+vnoremap ) :NvViRightSquareBracket action=target mode=mode_visual target=')'<CR>
+nnoremap [ :NvViLeftSquareBracket action=target mode=mode_normal target='['<CR>
+vnoremap [ :NvViLeftSquareBracket action=target mode=mode_visual target='['<CR>
+nnoremap ] :NvViRightSquareBracket action=target mode=mode_normal target=']'<CR>
+vnoremap ] :NvViRightSquareBracket action=target mode=mode_visual target=']'<CR>
+nnoremap { :NvViLeftSquareBracket action=target mode=mode_normal target='{'<CR>
+vnoremap { :NvViLeftSquareBracket action=target mode=mode_visual target='{'<CR>
+nnoremap } :NvViRightSquareBracket action=target mode=mode_normal target='}'<CR>
+vnoremap } :NvViRightSquareBracket action=target mode=mode_visual target='}'<CR>
+
 " Paredit
 noremap FileType clj,cljs,cljc,bb,edn o A:ClojureSublimedInsertNewline<CR>
 
@@ -124,19 +138,22 @@ nnoremap FileType clj,cljs,cljc,bb,edn ,tn :ClojureSublimedEvalCode code='(cloju
 "inoremap FileType clj,cljs,cljc,bb,edn <del> :PareditForwardDelete<CR>
 "inoremap FileType clj,cljs,cljc,bb,edn <BS> :PareditBackwardDelete<CR>
 "inoremap FileType clj,cljs,cljc,bb,edn C-k :PareditKill<CR>
-nnoremap FileType clj,cljs,cljc,bb,edn S-d :PareditKill<CR>
-nnoremap FileType clj,cljs,cljc,bb,edn <space>kdx :PareditKillExpression<CR>
-nnoremap FileType clj,cljs,cljc,bb,edn <space>kdw :PareditForwardKillWord<CR>
-nnoremap FileType clj,cljs,cljc,bb,edn <space>kdW :PareditBackwardKillWord<CR>
-noremap FileType clj,cljs,cljc,bb,edn <space>kww :PareditWrapRound<CR>
-noremap FileType clj,cljs,cljc,bb,edn <space>kw( :PareditWrapRound<CR>
-noremap FileType clj,cljs,cljc,bb,edn <space>kw[ :PareditWrapSquare<CR>
-noremap FileType clj,cljs,cljc,bb,edn <space>kw{ :PareditWrapCurly<CR>
-noremap FileType clj,cljs,cljc,bb,edn <space>kw" :PareditMetaDoublequote<CR>
-nnoremap FileType clj,cljs,cljc,bb,edn <space>kW :PareditSpliceSexp<CR>
-nnoremap FileType clj,cljs,cljc,bb,edn <space>ks :PareditForwardSlurpSexp<CR>
-nnoremap FileType clj,cljs,cljc,bb,edn <space>kb :PareditForwardBarfSexp<CR>
-nnoremap FileType clj,cljs,cljc,bb,edn <space>kS :PareditBackwardSlurpSexp<CR>
-nnoremap FileType clj,cljs,cljc,bb,edn <space>kB :PareditBackwardBarfSexp<CR>
-nnoremap FileType clj,cljs,cljc,bb,edn <space>kf :PareditSplitSexp<CR>
-nnoremap FileType clj,cljs,cljc,bb,edn <space>kj :PareditJoinSexp<CR>
+"nnoremap FileType clj,cljs,cljc,bb,edn S-d :PareditKill<CR>
+nnoremap <space>kdx :PareditKillExpression<CR>
+nnoremap <space>kdw :PareditForwardKillWord<CR>
+nnoremap <space>kdW :PareditBackwardKillWord<CR>
+noremap <space>kw :PareditWrapRound<CR>
+noremap <space>k( :PareditWrapRound<CR>
+noremap <space>k) :PareditWrapRound<CR>
+noremap <space>k[ :PareditWrapSquare<CR>
+noremap <space>k] :PareditWrapSquare<CR>
+noremap <space>k{ :PareditWrapCurly<CR>
+noremap <space>k} :PareditWrapCurly<CR>
+noremap <space>k" :PareditMetaDoublequote<CR>
+nnoremap <space>kW :PareditSpliceSexp<CR>
+nnoremap <space>ks :PareditForwardSlurpSexp<CR>
+nnoremap <space>kb :PareditForwardBarfSexp<CR>
+nnoremap <space>kS :PareditBackwardSlurpSexp<CR>
+nnoremap <space>kB :PareditBackwardBarfSexp<CR>
+nnoremap <space>kf :PareditSplitSexp<CR>
+nnoremap <space>kj :PareditJoinSexp<CR>
