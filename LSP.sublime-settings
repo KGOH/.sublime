@@ -1,11 +1,13 @@
 // Settings in here override those in "LSP/LSP.sublime-settings"
 {
-    "clients": {
-        "clojure-lsp": {
-            "enabled": true,
-            "command": ["/opt/homebrew/bin/clojure-lsp"], // Update the PATH
-            "selector": "source.clojure",
-            "initializationOptions": {}
-        }
-    }
+    "show_view_status": false,
+    "show_code_actions": "bulb",
+    //"log_server": ["panel"],
+    //"clients": {
+    //    "clojure-lsp": {
+    //        "enabled": true,
+    //        "command": ["/opt/homebrew/bin/clojure-lsp"], // Update the PATH
+    //        "selector": "source.clojure"
+    //    }
+    //}
 }

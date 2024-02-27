@@ -58,6 +58,8 @@ nnoremap <space>bc :CloseFile<CR>
 nnoremap <space>by :CopyPath<CR>
 
 " OS tabs
+nnoremap <space>ll :NextOsTab<CR>
+nnoremap <space>lh :PrevOsTab<CR>
 nnoremap <space>ln :NextOsTab<CR>
 nnoremap <space>lp :PrevOsTab<CR>
 nnoremap <space>lN :NewOsTab<CR>
@@ -128,13 +130,13 @@ nnoremap FileType clj,cljs,cljc,bb,edn ,tn :ClojureSublimedEvalCode code='(cloju
 
 
 " Paredit
-"inoremap FileType clj,cljs,cljc,bb,edn ( :PareditOpenRound<CR>
-"inoremap FileType clj,cljs,cljc,bb,edn ) :PareditCloseRound<CR>
-"inoremap FileType clj,cljs,cljc,bb,edn [ :PareditOpenSquare<CR>
-"inoremap FileType clj,cljs,cljc,bb,edn ] :PareditCloseSquare<CR>
-"inoremap FileType clj,cljs,cljc,bb,edn { :PareditOpenCurly<CR>
-"inoremap FileType clj,cljs,cljc,bb,edn } :PareditCloseCurly<CR>
-"inoremap FileType clj,cljs,cljc,bb,edn " :PareditDoublequote<CR>
+inoremap FileType ( :PareditOpenRound<CR>
+inoremap FileType ) :PareditCloseRound<CR>
+inoremap FileType [ :PareditOpenSquare<CR>
+inoremap FileType ] :PareditCloseSquare<CR>
+inoremap FileType { :PareditOpenCurly<CR>
+inoremap FileType } :PareditCloseCurly<CR>
+inoremap FileType " :PareditDoublequote<CR>
 "inoremap FileType clj,cljs,cljc,bb,edn <del> :PareditForwardDelete<CR>
 "inoremap FileType clj,cljs,cljc,bb,edn <BS> :PareditBackwardDelete<CR>
 "inoremap FileType clj,cljs,cljc,bb,edn C-k :PareditKill<CR>

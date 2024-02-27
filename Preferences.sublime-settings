@@ -1,40 +1,58 @@
 {
-	"ignored_packages":
-	[
-		"Vintage",
-	],
-	"theme": "Adaptive.sublime-theme",
-	"font_face": "Iosevka",
-	"font_size": 15,
-	//"executor_output_view": true,
+    "ignored_packages":
+    [
+        "Vintage",
+    ],
+    "theme": "Adaptive.sublime-theme",
+    "font_face": "Iosevka",
+    "font_size": 15,
+    //"executor_output_view": true,
 
-	"create_window_at_startup": false,
-	"native_tabs": "preferred",
-	"hide_tab_scrolling_buttons": true,
-	"hide_new_tab_button": true,
-	"show_sidebar_button": false,
-	"remember_full_screen": true,
-	"reload_file_on_change": true, // what if there are unsaved changes?
-	"show_navigation_bar": false,
-	"auto_hide_tabs": false,
-	"auto_hide_menu": false, // what menu?
+    // These settings control the size of the caret
+    "caret_extra_bottom": 0,
+    "caret_extra_top": 0,
+    // "caret_extra_width": 0,
+    
+    // Valid values are "smooth", "phase", "blink" and "solid". Previous
+    // versions of Sublime Text used "smooth" by default.
+    "caret_style": "solid",
+    "draw_indent_guides": false,
+    "file_tab_style": "square",
+    // "animation_enabled": false,
+    "highlight_modified_tabs": true,
+    "show_tab_close_buttons": false,
+    "enable_tab_scrolling": true,
+    "hardware_acceleration": "opengl",
 
-	"tab_size": 4,
-	"translate_tabs_to_spaces": true,
 
-	"line_numbers": false, 
-	"highlight_line": true,
-	"gutter": true,
-	"margin": 0,
-	"always_show_minimap_viewport": true,
+    "create_window_at_startup": false,
+    "native_tabs": "preferred",
+    "hide_tab_scrolling_buttons": true,
+    "hide_new_tab_button": true,
+    "show_sidebar_button": false,
+    "remember_full_screen": true,
+    "reload_file_on_change": true, // what if there are unsaved changes?
+    "show_navigation_bar": false,
+    "auto_hide_tabs": false,
+    "auto_hide_menu": false, // what menu?
 
-	"goto_anything_exclude_gitignore": true,
-	
-	"neovintageous_build_version": 13204,
-	"vintage_ctrl_keys": true,
-	"vintageous_use_ctrl_keys": true,
-	"vintageous_use_sys_clipboard": true,
-	"vintageous_exit_when_quitting_last_window": false,
+    "tab_size": 4,
+    "translate_tabs_to_spaces": true,
+
+    "line_numbers": false, 
+    "highlight_line": true,
+    "gutter": true,
+    "margin": 0,
+    "always_show_minimap_viewport": true,
+
+    "goto_anything_exclude_gitignore": true,
+    
+    "neovintageous_build_version": 13204,
+    "vintageous_multi_cursor_exit_from_visual_mode": true,
+    "vintage_ctrl_keys": true,
+    "vintageous_use_ctrl_keys": true,
+    "vintageous_use_sys_clipboard": true,
+    "vintageous_exit_when_quitting_last_window": false,
     "vintageous_reset_mode_when_switching_tabs": true,
     "vintageous_highlighted_yank_style": "outline",
 
@@ -44,6 +62,6 @@
 
     "vintageous_handle_keys": {
     },
-	"index_files": true,
-	"color_scheme": "Alabaster Mono.sublime-color-scheme",
+    "index_files": true,
+    "color_scheme": "Alabaster Mono.sublime-color-scheme",
 }
