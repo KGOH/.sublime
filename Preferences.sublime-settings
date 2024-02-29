@@ -4,8 +4,13 @@
         "Vintage",
     ],
     "theme": "Adaptive.sublime-theme",
+    //"color_scheme": "Alabaster Mono.sublime-color-scheme",
+    "color_scheme": "auto",
+    "light_color_scheme": "Alabaster Mono.sublime-color-scheme",
+    "dark_color_scheme": "Alabaster Dark Mono.sublime-color-scheme",
+
     "font_face": "Iosevka",
-    "font_size": 15,
+    "font_size": 16,
     //"executor_output_view": true,
 
     // These settings control the size of the caret
@@ -62,6 +67,5 @@
 
     "vintageous_handle_keys": {
     },
-    "index_files": true,
-    "color_scheme": "Alabaster Mono.sublime-color-scheme",
+    "index_files": true
 }
