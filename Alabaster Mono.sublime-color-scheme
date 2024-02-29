@@ -8,6 +8,8 @@
     },
     "rules":
     [
-        
+        {"name":       "vintageous_highlighted_yank_style",
+         "scope":      "string highlightedyank",
+         "background": "var(fg)"},
     ]
 }
