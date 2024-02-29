@@ -1,0 +1,20 @@
+// Documentation at https://www.sublimetext.com/docs/color_schemes.html
+{
+    "variables":
+    {
+        "middle": "#999",
+        "bright": "#EEE",
+        "dark": "#222",
+        "active": "#CD974B",
+    },
+    "globals":
+    {
+        "background": "#000",
+        "line_highlight": "#fff2",
+        "selection": "#fff4",
+    },
+    "rules":
+    [
+        
+    ]
+}
