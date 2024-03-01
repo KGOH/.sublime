@@ -47,6 +47,8 @@ nnoremap <space>wl :NvViCtrlW action=l<CR>
 " Buffer
 nnoremap <space>bn :NextViewInStack<CR>
 nnoremap <space>bp :PrevViewInStack<CR>
+nnoremap <space><tab> :PrevViewInStack<CR>
+nnoremap <space><S-tab> :NextViewInStack<CR>
 nnoremap <space>bh :PrevView<CR>
 nnoremap <space>bl :NextView<CR>
 nnoremap <space>b<left> :NextView<CR>
@@ -106,9 +108,14 @@ noremap FileType clj,cljs,cljc,bb,edn o A:ClojureSublimedInsertNewline<CR>
 " "
 "inoremap FileType clj,cljs,cljc,bb,edn enter :ClojureSublimedInsertNewline<CR>
 
-nnoremap ,sR :ExecutorExecuteShell command='/opt/homebrew/bin/clojure  -X clojure.core.server/start-server :name repl :port 5555 :accept clojure.core.server/repl :server-daemon false'<CR>
+nnoremap FileType clj,cljs,cljc,bb,edn ,sc :ClojureSublimedConnectSocketRepl<CR>
+nnoremap FileType clj,cljs,cljc,bb,edn ,sj :MyClojureJackIn<CR> 
+nnoremap ,srd :ExecutorExecuteShell command='freeport > .repl-port && echo "$(<.repl-port)" && clojure  -X clojure.core.server/start-server :name repl :port "$(<.repl-port)" :accept clojure.core.server/repl :server-daemon false'<CR>
+nnoremap ,srl :ExecutorExecuteShell command='freeport > .repl-port && echo "$(<.repl-port)" && LEIN_JVM_OPTS=-Dclojure.server.repl="{:port,$(<.repl-port),:accept,clojure.core.server/repl}" lein repl :headless'<CR>
+nnoremap FileType clj,cljs,cljc,bb,edn ,eo :ShowPanel panel=output.exec<CR>
+
 noremap FileType clj,cljs,cljc,bb,edn o A:ClojureSublimedInsertNewline<CR>
-noremap FileType clj,cljs,cljc,bb,edn O kA: ClojureSublimedInsertNewline<CR>
+noremap FileType clj,cljs,cljc,bb,edn O kA:ClojureSublimedInsertNewline<CR>
 
 noremap FileType clj,cljs,cljc,bb,edn ,ee :ClojureSublimedEval<CR>
 nnoremap FileType clj,cljs,cljc,bb,edn ,eb :ClojureSublimedEvalBuffer<CR>
