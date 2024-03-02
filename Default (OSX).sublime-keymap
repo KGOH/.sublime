@@ -22,7 +22,15 @@
 ,{"keys": [" ", "p", "t"],
   "command": "toggle_sidebar_and_focus",
   "context": [{"key": "control", "operand": "sidebar_tree"}]}
-  
+
+// ,{"keys":    ["super+b"],
+//   "command": "chain",
+//   "args": {"commands":
+//            [["my_write_free_repl_port"],
+//             ["executor_execute_shell", {"command": "echo $(<.repl-port) && lein repl :headless :port $(<.repl-port)"}],
+//             ["my_wait_for_repl"],
+//             ["clojure_sublimed_connect_nrepl_raw", {"address": "auto"}]]},
+//   "context": [{"key": "selector", "operator": "equal", "operand": "source.clojure"}]}  
 //,{"keys": ["("], "command": "paredit_open_round"
 // ,"context": [{"key": "should_paredit"}, {"key": "vi_insert_mode_aware"}]}
 //,{"keys": [")"], "command": "paredit_close_round"
