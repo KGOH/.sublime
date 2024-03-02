@@ -111,7 +111,7 @@ noremap FileType clj,cljs,cljc,bb,edn o A:ClojureSublimedInsertNewline<CR>
 nnoremap FileType clj,cljs,cljc,bb,edn ,sc :ClojureSublimedConnectSocketRepl<CR>
 nnoremap FileType clj,cljs,cljc,bb,edn ,sj :MyClojureJackIn<CR> 
 nnoremap ,srd :ExecutorExecuteShell command='freeport > .repl-port && echo "$(<.repl-port)" && clojure  -X clojure.core.server/start-server :name repl :port "$(<.repl-port)" :accept clojure.core.server/repl :server-daemon false'<CR>
-nnoremap ,srl :ExecutorExecuteShell command='freeport > .repl-port && echo "$(<.repl-port)" && LEIN_JVM_OPTS=-Dclojure.server.repl="{:port,$(<.repl-port),:accept,clojure.core.server/repl}" lein repl :headless'<CR>
+nnoremap ,srl :ExecutorExecuteShell command='freeport > .repl-port && echo "$(<.repl-port)" && lein repl :headless :port $(<.repl-port)'<CR>
 nnoremap FileType clj,cljs,cljc,bb,edn ,eo :ShowPanel panel=output.exec<CR>
 
 noremap FileType clj,cljs,cljc,bb,edn o A:ClojureSublimedInsertNewline<CR>
@@ -122,7 +122,7 @@ nnoremap FileType clj,cljs,cljc,bb,edn ,eb :ClojureSublimedEvalBuffer<CR>
 nnoremap FileType clj,cljs,cljc,bb,edn ,ec :ClojureSublimedClearEvals<CR>
 nnoremap FileType clj,cljs,cljc,bb,edn ,eC :ClojureSublimedInterruptEval<CR>
 
-nnoremap FileType clj,cljs,cljc,bb,edn ,Ti :ClojureSublimedToggleInfo<CR>
+nnoremap FileType clj,cljs,cljc,bb,edn ,i :ClojureSublimedToggleInfo<CR>
 nnoremap FileType clj,cljs,cljc,bb,edn ,Te :ClojureSublimedToggleTrace<CR>
 nnoremap FileType clj,cljs,cljc,bb,edn ,Td :ClojureSublimedToggleSymbol<CR>
 
