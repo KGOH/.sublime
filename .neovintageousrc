@@ -121,6 +121,8 @@ noremap FileType clj,cljs,cljc,bb,edn ,ee :ClojureSublimedEval<CR>
 nnoremap FileType clj,cljs,cljc,bb,edn ,eb :ClojureSublimedEvalBuffer<CR>
 nnoremap FileType clj,cljs,cljc,bb,edn ,ec :ClojureSublimedClearEvals<CR>
 nnoremap FileType clj,cljs,cljc,bb,edn ,eC :ClojureSublimedInterruptEval<CR>
+nnoremap FileType clj,cljs,cljc,bb,edn ,e; :MyClojureSublimedEvalToComment<CR>
+nnoremap FileType clj,cljs,cljc,bb,edn ,ep :MyClojureSublimedEvalToBuffer<CR>
 
 nnoremap FileType clj,cljs,cljc,bb,edn ,i :ClojureSublimedToggleInfo<CR>
 nnoremap FileType clj,cljs,cljc,bb,edn ,Te :ClojureSublimedToggleTrace<CR>
