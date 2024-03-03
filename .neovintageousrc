@@ -108,7 +108,6 @@ nnoremap <space>a :ShowPanel panel=output.exec<CR>
 " nnoremap ,sj :ClojureSublimedConnectSocketRepl address=auto<CR>
 " "
 "inoremap FileType clj,cljs,cljc,bb,edn enter :ClojureSublimedInsertNewline<CR>
-noremap FileType clj,cljs,cljc,bb,edn ,, :MyClojureSublimedUnderCursor<CR>
 
 nnoremap FileType clj,cljs,cljc,bb,edn ,sc :ClojureSublimedConnectSocketRepl<CR>
 nnoremap FileType clj,cljs,cljc,bb,edn ,sj :MyClojureJackIn<CR> 
@@ -138,6 +137,7 @@ nnoremap FileType clj,cljs,cljc,bb,edn ,=b :ClojureSublimedReindentBuffer<CR>
 
 nnoremap FileType clj,cljs,cljc,bb,edn ,ta :ClojureSublimedEvalCode code='(clojure.test/run-all-tests)'<CR>
 nnoremap FileType clj,cljs,cljc,bb,edn ,tn :ClojureSublimedEvalCode code='(clojure.test/run-tests)'<CR>
+noremap FileType clj,cljs,cljc,bb,edn ,tt :MyClojureSublimedRunTestUnderCursor<CR>
 
 
 " Paredit
