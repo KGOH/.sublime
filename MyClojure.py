@@ -55,3 +55,38 @@ class MyClojureSublimedEvalToCommentCommand(sublime_plugin.TextCommand):
 
     def is_enabled(self):
         return cs_conn.ready(self.view.window()) and len(self.view.sel()) == 1
+
+
+def extract_test_var_at_point(view):
+    region = view.sel()[0]
+    point = region.begin()
+
+    if point >= view.size() or view.substr(sublime.Region(point, point + 1)).isspace():
+        while point > 0 and view.substr(sublime.Region(point - 1, point)).isspace():
+            point = point - 1
+
+    parsed = cs_parser.parse_tree(view)
+    node = cs_parser.search(parsed, point, max_depth = 1)
+
+    test_name_sym = None
+    maybe_deftest_sym = node.body.children[0]
+    if (maybe_deftest_sym.name == "token" and maybe_deftest_sym.text.endswith("deftest")):
+      test_name_node = node.body.children[1]
+      if (test_name_node.name == "meta"):
+        test_name_node = test_name_node.body.children[0]
+
+      if (test_name_node.name == "token"):
+        test_name_sym = "#'" + test_name_node.text
+    return test_name_sym
+
+
+class MyClojureSublimedRunTestUnderCursorCommand(sublime_plugin.TextCommand):
+    """ Extracts test var in which cursor is in and runs it """
+    def run(self, edit):
+        test_var = extract_test_var_at_point(self.view)
+        window = self.view.window()
+        window.run_command(cmd="clojure_sublimed_eval_code",
+                           args={"code": "(clojure.test/run-test-var %s)"%test_var})
+
+    def is_enabled(self):
+        return cs_conn.ready(self.view.window()) and len(self.view.sel()) == 1
