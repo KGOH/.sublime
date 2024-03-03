@@ -103,16 +103,18 @@ vnoremap } :NvViRightSquareBracket action=target mode=mode_visual target='}'<CR>
 " Paredit
 noremap FileType clj,cljs,cljc,bb,edn o A:ClojureSublimedInsertNewline<CR>
 
+nnoremap <space>a :ShowPanel panel=output.exec<CR>
 " Clojure Sublimed
 " nnoremap ,sj :ClojureSublimedConnectSocketRepl address=auto<CR>
 " "
 "inoremap FileType clj,cljs,cljc,bb,edn enter :ClojureSublimedInsertNewline<CR>
+noremap FileType clj,cljs,cljc,bb,edn ,, :MyClojureSublimedUnderCursor<CR>
 
 nnoremap FileType clj,cljs,cljc,bb,edn ,sc :ClojureSublimedConnectSocketRepl<CR>
 nnoremap FileType clj,cljs,cljc,bb,edn ,sj :MyClojureJackIn<CR> 
-nnoremap ,srd :ExecutorExecuteShell command='freeport > .repl-port && echo "$(<.repl-port)" && clojure  -X clojure.core.server/start-server :name repl :port "$(<.repl-port)" :accept clojure.core.server/repl :server-daemon false'<CR>
-nnoremap ,srl :ExecutorExecuteShell command='freeport > .repl-port && echo "$(<.repl-port)" && lein repl :headless :port $(<.repl-port)'<CR>
-nnoremap FileType clj,cljs,cljc,bb,edn ,eo :ShowPanel panel=output.exec<CR>
+nnoremap FileType clj,cljs,cljc,bb,edn ,srd :ExecutorExecuteShell command='freeport > .repl-port && echo "$(<.repl-port)" && clojure  -X clojure.core.server/start-server :name repl :port "$(<.repl-port)" :accept clojure.core.server/repl :server-daemon false'<CR>
+nnoremap FileType clj,cljs,cljc,bb,edn ,srl :ExecutorExecuteShell command='freeport > .repl-port && echo "$(<.repl-port)" && lein repl :headless :port $(<.repl-port)'<CR>
+nnoremap FileType clj,cljs,cljc,bb,edn ,sa :ShowPanel panel=output.exec<CR>
 
 noremap FileType clj,cljs,cljc,bb,edn o A:ClojureSublimedInsertNewline<CR>
 noremap FileType clj,cljs,cljc,bb,edn O kA:ClojureSublimedInsertNewline<CR>
