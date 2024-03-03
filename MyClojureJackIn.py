@@ -8,13 +8,20 @@ import time
 from contextlib import closing
 
 def project_dir(self):
+    folders = self.window.folders()
+
+    file = None
+    if view := self.window.active_view():
+        file = view.file_name() 
+
     dir = None
-    if len(self.window.folders()) > 0:
-        dir = self.window.folders()[0]
-    elif (view := self.window.active_view()) and (file := self.view.file_name()):
+    if len(folders) > 0:
+        dir = next((f for f in folders if file.startswith(f)), folders[0])
+    elif view and file:
         dir = os.path.dirname(file)
     else:
         dir = os.path.expanduser("~")   
+
     return dir
 
 
