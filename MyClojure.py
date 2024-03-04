@@ -80,4 +80,4 @@ class MyClojureSublimedRunTestUnderCursorCommand(sublime_plugin.TextCommand):
                            args={"code": run_test_var_fstr%test_var})
 
     def is_enabled(self):
-        return cs_conn.ready(self.view.window()) and len(self.view.sel()) == 1
+        return cs_conn.ready(self.view.window())
