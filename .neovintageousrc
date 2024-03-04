@@ -123,15 +123,15 @@ nnoremap FileType clj,cljs,cljc,bb,edn ,eb :ClojureSublimedEvalBuffer<CR>
 nnoremap FileType clj,cljs,cljc,bb,edn ,ec :ClojureSublimedClearEvals<CR>
 nnoremap FileType clj,cljs,cljc,bb,edn ,eC :ClojureSublimedInterruptEval<CR>
 noremap FileType clj,cljs,cljc,bb,edn ,e; :MyClojureSublimedEvalToComment<CR>
-"noremap FileType clj,cljs,cljc,bb,edn ,ep :ClojureSublimedEvalWithWrap wrap_fstr='(as-> %s $ (do (require [(symbol "clojure.pprint")]) (require [(symbol "clojure.java.io")]) (clojure.pprint/pprint $ (clojure.java.io/writer "/tmp/sublimed_output.edn")) $))'\|:OpenFile file='/tmp/sublimed_output.edn'<CR>
-noremap FileType clj,cljs,cljc,bb,edn ,ep :ClojureSublimedEvalWithWrap wrap_fstr='(as-> %s $ (do (require [(symbol "fipp.edn")]) (require [(symbol "clojure.java.io")]) (fipp.edn/pprint $ {:writer (clojure.java.io/writer "/tmp/sublimed_output.edn")}) $))'\|:OpenFile file='/tmp/sublimed_output.edn'<CR>
-noremap FileType clj,cljs,cljc,bb,edn ,ef :ClojureSublimedEvalWithWrap wrap_fstr='(as-> %s $ (do (require [(symbol "clojure.java.io")]) (with-open [w (clojure.java.io/writer "/tmp/sublimed_output.edn")] (binding [*print-length* nil *out* w] (pr $))) $))'\|:OpenFile file='/tmp/sublimed_output.edn'<CR>
+noremap FileType clj,cljs,cljc,bb,edn ,ep :ClojureSublimedEval transform='(as-> %code $ (do (require [(symbol :clojure.pprint)]) (require [(symbol :clojure.java.io)]) (clojure.pprint/pprint $ (clojure.java.io/writer "/tmp/sublimed_output.edn")) $))'\|:OpenFile file='/tmp/sublimed_output.edn'<CR>
+"noremap FileType clj,cljs,cljc,bb,edn ,ep :ClojureSublimedEval transform='(as-> %code $ (do (require [(symbol :fipp.edn)]) (require [(symbol :clojure.java.io)]) $) (do (fipp.edn/pprint $ {:writer (clojure.java.io/writer "/tmp/sublimed_output.edn")}) $))'\|:OpenFile file='/tmp/sublimed_output.edn'<CR>
+noremap FileType clj,cljs,cljc,bb,edn ,ef :ClojureSublimedEval transform='(as-> %code $ (do (require [(symbol :clojure.java.io)]) (with-open [w (clojure.java.io/writer "/tmp/sublimed_output.edn")] (binding [*print-length* nil *out* w] (pr $))) $))'\|:OpenFile file='/tmp/sublimed_output.edn'<CR>
 
-nnoremap FileType clj,cljs,cljc,bb,edn <space>op :ClojureSublimedEvalCode code='(require [(symbol "sc.api")])'\|:MyClojureSublimedEvalWithInsert insert_str='(sc.api/spyqt)'<CR>
-nnoremap FileType clj,cljs,cljc,bb,edn <space>oP :ClojureSublimedEvalCode code='(do (require [(symbol "sc.api")]) (ps.sc/undefsc-all) (sc.api/dispose-all!) (ps.sc/drop-letsc-select!) :ps.sc/dispose)'\|:MyClojureSublimedEvalWithInsert insert_str='(sc.api/spyqt)'<CR>
-noremap FileType clj,cljs,cljc,bb,edn <space>oll :ClojureSublimedEvalWithWrap wrap_fstr='(ps.sc/letsc-last (quote %s))'<CR>
-noremap FileType clj,cljs,cljc,bb,edn <space>ola :ClojureSublimedEvalWithWrap wrap_fstr='(ps.sc/letsc-all (quote %s))'<CR>
-noremap FileType clj,cljs,cljc,bb,edn <space>ols :ClojureSublimedEvalWithWrap wrap_fstr='(ps.sc/letsc-selected (quote %s))'<CR>
+nnoremap FileType clj,cljs,cljc,bb,edn <space>op :ClojureSublimedEvalCode code='(require [(symbol :sc.api)])'\|:MyClojureSublimedEvalWithInsert insert_str='(sc.api/spyqt)'<CR>
+nnoremap FileType clj,cljs,cljc,bb,edn <space>oP :ClojureSublimedEvalCode code='(do (require [(symbol :sc.api)]) (ps.sc/undefsc-all) (sc.api/dispose-all!) (ps.sc/drop-letsc-select!) :ps.sc/dispose)'\|:MyClojureSublimedEvalWithInsert insert_str='(sc.api/spyqt)'<CR>
+noremap FileType clj,cljs,cljc,bb,edn <space>oll :ClojureSublimedEval transform='(ps.sc/letsc-last (quote %code))'<CR>
+noremap FileType clj,cljs,cljc,bb,edn <space>ola :ClojureSublimedEval transform='(ps.sc/letsc-all (quote %code))'<CR>
+noremap FileType clj,cljs,cljc,bb,edn <space>ols :ClojureSublimedEval transform='(ps.sc/letsc-selected (quote %code))'<CR>
 noremap FileType clj,cljs,cljc,bb,edn <space>odl :ClojureSublimedEvalCode code='(do (ps.sc/defsc-last) :ps.sc/defsc-last)'<CR>
 noremap FileType clj,cljs,cljc,bb,edn <space>ods :ClojureSublimedEvalCode code='(do (ps.sc/defsc-selected) :ps.sc/defsc-selected)'<CR>
 noremap FileType clj,cljs,cljc,bb,edn <space>ou :ClojureSublimedEvalCode code='(do (ps.sc/undefsc-all) :ps.sc/undef-all)'<CR>

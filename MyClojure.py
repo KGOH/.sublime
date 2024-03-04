@@ -40,10 +40,11 @@ class MyClojureSublimedEvalToCommentCommand(sublime_plugin.TextCommand):
         return cs_conn.ready(self.view.window())
 
 
-def insert_code(code, eval_region, sel_region, insert_str):
-    global_cursor_pos = sel_region.begin()
-    local_cursor_pos = global_cursor_pos - eval_region.begin()
-    return code[:local_cursor_pos] + insert_str + code[local_cursor_pos:]
+def insert_code(code, insert_str, **kwargs):
+    global_cursor_pos = kwargs["selected_region"].begin()
+    local_cursor_pos = global_cursor_pos - kwargs["eval_region"].begin()
+    with_inserted_code = code[:local_cursor_pos] + insert_str + code[local_cursor_pos:]
+    return with_inserted_code
 
 
 class MyClojureSublimedEvalWithInsertCommand(sublime_plugin.TextCommand):
@@ -51,7 +52,7 @@ class MyClojureSublimedEvalWithInsertCommand(sublime_plugin.TextCommand):
     def run(self, edit, insert_str):
         view = self.view
         state = cs_common.get_state(view.window())
-        state.conn.eval(view, view.sel(), wrap_fn=(lambda code, eval_region, sel_region: insert_code(code, eval_region, sel_region, insert_str)))
+        state.conn.eval(view, view.sel(), transform_fn=(lambda code, **kwargs: insert_code(code, insert_str, **kwargs)))
 
     def is_enabled(self):
         return cs_conn.ready(self.view.window()) and len(self.view.sel()) == 1
