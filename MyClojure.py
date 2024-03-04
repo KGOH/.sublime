@@ -68,7 +68,7 @@ run_test_var_fstr = """
 (let [r (clojure.test/run-test-var %s)]
   (if (and (zero? (:fail r)) (zero? (:error r)))
     r
-    (throw (ex-info \\"Test failed\\" r))))
+    (throw (ex-info "Test failed" r))))
 """
 
 class MyClojureSublimedRunTestUnderCursorCommand(sublime_plugin.TextCommand):
