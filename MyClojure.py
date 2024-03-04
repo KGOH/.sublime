@@ -24,7 +24,7 @@ def format_comment(pprint_str):
         first_line, rest_lines = pprint_str.split("\n", 1)
         comment = "\n#_" + first_line + "\n" + textwrap.indent(rest_lines, "  ") + "\n"
     else:
-        comment = " #_" + pprint_str + " "
+        comment = " #_" + pprint_str
     return comment
 
 
@@ -32,12 +32,12 @@ class MyClojureSublimedEvalToCommentCommand(sublime_plugin.TextCommand):
     """ Pretty prints result into comment """
     def run(self, edit):
         view = self.view
-        sel = view.sel()[0]
-        if eval := cs_eval.by_region(view, sel):
-            self.view.insert(edit, eval.region().end(), format_comment(eval_pprint_str(eval)))
+        for sel in view.sel():
+            if eval := cs_eval.by_region(view, sel):
+                self.view.insert(edit, eval.region().end(), format_comment(eval_pprint_str(eval)))
 
     def is_enabled(self):
-        return cs_conn.ready(self.view.window()) and len(self.view.sel()) == 1
+        return cs_conn.ready(self.view.window())
 
 
 def extract_test_var_at_point(view):
