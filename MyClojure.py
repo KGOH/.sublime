@@ -28,23 +28,6 @@ def format_comment(pprint_str):
     return comment
 
 
-pprint_output_filepath = "/tmp/sublimed_pprint_output.edn"
-
-
-class MyClojureSublimedEvalToBufferCommand(sublime_plugin.TextCommand):
-    """ Pretty prints result into the second buffer """
-    def run(self, edit):
-        view = self.view
-        sel = view.sel()[0]
-        if eval := cs_eval.by_region(view, sel):
-            with open(pprint_output_filepath, "w") as f:
-                f.write(eval_pprint_str(eval))
-            view.window().open_file(pprint_output_filepath) 
-
-    def is_enabled(self):
-        return cs_conn.ready(self.view.window()) and len(self.view.sel()) == 1
-
-
 class MyClojureSublimedEvalToCommentCommand(sublime_plugin.TextCommand):
     """ Pretty prints result into comment """
     def run(self, edit):
