@@ -122,7 +122,7 @@ nnoremap FileType clj,cljs,cljc,bb,edn ,eb :ClojureSublimedEvalBuffer<CR>
 nnoremap FileType clj,cljs,cljc,bb,edn ,ec :ClojureSublimedClearEvals<CR>
 nnoremap FileType clj,cljs,cljc,bb,edn ,eC :ClojureSublimedInterruptEval<CR>
 noremap FileType clj,cljs,cljc,bb,edn ,e; :MyClojureSublimedEvalToComment<CR>
-noremap FileType clj,cljs,cljc,bb,edn ,ep :ClojureSublimedEval transform='(as-> %code $ (do (require [(symbol :clojure.pprint)]) (require [(symbol :clojure.java.io)]) (clojure.pprint/pprint $ (clojure.java.io/writer "/tmp/sublimed_output.edn")) $))'\|:OpenFile file='/tmp/sublimed_output.edn'<CR>
+noremap FileType clj,cljs,cljc,bb,edn ,ep :ClojureSublimedEval transform='(as-> %code $ (do (require [(symbol :clojure.pprint)]) (require [(symbol :clojure.java.io)]) (with-open [w (clojure.java.io/writer "/tmp/sublimed_output.edn")] (clojure.pprint/pprint $ w)) $))'\|:OpenFile file='/tmp/sublimed_output.edn'<CR>
 "noremap FileType clj,cljs,cljc,bb,edn ,ep :ClojureSublimedEval transform='(as-> %code $ (do (require [(symbol :fipp.edn)]) (require [(symbol :clojure.java.io)]) $) (do (fipp.edn/pprint $ {:writer (clojure.java.io/writer "/tmp/sublimed_output.edn")}) $))'\|:OpenFile file='/tmp/sublimed_output.edn'<CR>
 noremap FileType clj,cljs,cljc,bb,edn ,ef :ClojureSublimedEval transform='(as-> %code $ (do (require [(symbol :clojure.java.io)]) (with-open [w (clojure.java.io/writer "/tmp/sublimed_output.edn")] (binding [*print-length* nil *out* w] (pr $))) $))'\|:OpenFile file='/tmp/sublimed_output.edn'<CR>
 
