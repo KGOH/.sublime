@@ -1,6 +1,7 @@
 import sublime
 import os
 import sublime_plugin
+import urllib.parse
 
 new_file = sublime.QuickPanelItem(trigger="    New file", annotation="Creates a new file here")
 this_dir = sublime.QuickPanelItem(trigger="    This folder", annotation="Opens this folder in the current window")
@@ -11,6 +12,11 @@ class MyHelmCommand(sublime_plugin.WindowCommand):
         home = os.path.expanduser('~')
         start = self.window.extract_variables().get('folder', home)
         path = self.window.extract_variables().get('file_path')
+        if path is None and (lsp_uri := self.window.active_view().settings().get("lsp_uri", None)):
+            if lsp_uri.startswith("zipfile://"):
+                parsed = urllib.parse.urlparse(lsp_uri)
+                archive, file = parsed.path.split("::")
+                path = archive
         current_file = os.path.relpath(path, start=start) if path else start
         print(start, path, current_file)
         full_path = os.path.normpath(os.path.join(start, current_file))
