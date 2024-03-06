@@ -158,9 +158,9 @@ nnoremap FileType clj,cljs,cljc,bb,edn ,== :ClojureSublimedReindentLines<CR>
 nnoremap FileType clj,cljs,cljc,bb,edn ,=r :ClojureSublimedReindentLines<CR>
 nnoremap FileType clj,cljs,cljc,bb,edn ,=b :ClojureSublimedReindentBuffer<CR>
 
-nnoremap FileType clj,cljs,cljc,bb,edn ,ta :ClojureSublimedEvalCode code='(let [r (clojure.test/run-all-tests)] (if (and (zero? (:fail r)) (zero? (:error r))) r (throw (ex-info "Tests failed" r))))'<CR>
-nnoremap FileType clj,cljs,cljc,bb,edn ,tn :ClojureSublimedEvalCode code='(let [r (clojure.test/run-tests)] (if (and (zero? (:fail r)) (zero? (:error r))) r (throw (ex-info "Tests failed" r))))'<CR>
-noremap FileType clj,cljs,cljc,bb,edn ,tt :ClojureSublimedEval transform='(let [r (clojure.test/run-test-var (var %symbol))] (if (and (zero? (:fail r)) (zero? (:error r))) r (throw (ex-info "Tests failed" r))))'<CR>
+nnoremap FileType clj,cljs,cljc,bb,edn ,ta :ClojureSublimedEvalCode code='(clojure.test/run-all-tests)'<CR>
+nnoremap FileType clj,cljs,cljc,bb,edn ,tn :ClojureSublimedEvalCode code='(clojure.test/run-tests)'<CR>
+noremap FileType clj,cljs,cljc,bb,edn ,tt :ClojureSublimedEval transform='(clojure.test/run-test-var %code)'<CR>
 
 
 " Paredit
