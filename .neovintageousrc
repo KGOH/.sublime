@@ -128,23 +128,15 @@ noremap FileType clj,cljs,cljc,bb,edn ,ef :ClojureSublimedEval transform='(as-> 
 
 nnoremap FileType clj,cljs,cljc,bb,edn ,pp :ClojureSublimedEvalCode code='(require [(symbol :sc.api)])'\|:MyClojureSublimedEvalWithInsert insert_str='(sc.api/spyqt)'<CR>
 nnoremap FileType clj,cljs,cljc,bb,edn ,pP :ClojureSublimedEvalCode code='(do (require [(symbol :sc.api)]) (ps.sc/undefsc-all) (sc.api/dispose-all!) (ps.sc/drop-letsc-select!) :ps.sc/dispose)'\|:MyClojureSublimedEvalWithInsert insert_str='(sc.api/spyqt)'<CR>
-noremap FileType clj,cljs,cljc,bb,edn ,pll :ClojureSublimedEval transform='(ps.sc/letsc-last (quote %code))'<CR>
-noremap FileType clj,cljs,cljc,bb,edn ,pla :ClojureSublimedEval transform='(ps.sc/letsc-all (quote %code))'<CR>
-noremap FileType clj,cljs,cljc,bb,edn ,pls :ClojureSublimedEval transform='(ps.sc/letsc-selected (quote %code))'<CR>
-noremap FileType clj,cljs,cljc,bb,edn ,pdl :ClojureSublimedEvalCode code='(do (ps.sc/defsc-last) :ps.sc/defsc-last)'<CR>
-noremap FileType clj,cljs,cljc,bb,edn ,pds :ClojureSublimedEvalCode code='(do (ps.sc/defsc-selected) :ps.sc/defsc-selected)'<CR>
+noremap FileType clj,cljs,cljc,bb,edn ,pl :ClojureSublimedEval transform='(ps.sc/letsc! (quote %code))'<CR>
+noremap FileType clj,cljs,cljc,bb,edn ,pa :ClojureSublimedEval transform='(ps.sc/letsc-all (quote %code))'<CR>
+noremap FileType clj,cljs,cljc,bb,edn ,pd :ClojureSublimedEvalCode code='(do (ps.sc/defsc!) :ps.sc/defsc-last)'<CR>
 noremap FileType clj,cljs,cljc,bb,edn ,pu :ClojureSublimedEvalCode code='(do (ps.sc/undefsc-all) :ps.sc/undef-all)'<CR>
 noremap FileType clj,cljs,cljc,bb,edn ,pq :ClojureSublimedEvalCode code='(do (ps.sc/undefsc-all) (sc.api/dispose-all!) (ps.sc/drop-letsc-select!) :ps.sc/dispose)'<CR>
+nnoremap FileType clj,cljs,cljc,bb,edn ,pb :ClojureSublimedEvalCode code='(require [(symbol :sc.api)])'\|:MyClojureSublimedEvalWithInsert insert_str='(sc.api/brk)'<CR>
+noremap FileType clj,cljs,cljc,bb,edn ,pn :ClojureSublimedEvalCode code='(sc.api/loose)'<CR>
 
-"noremap FileType clj,cljs,cljc,bb,edn ,ps :MyClojureSublimedSelect<CR>
 noremap FileType clj,cljs,cljc,bb,edn ,ps :MyClojureSublimedSelect<CR>
-"noremap FileType clj,cljs,cljc,bb,edn ,pss :ClojureSublimedEval transform='(ps.sc/letsc-select-start! (quote %code))'<CR>
-"noremap FileType clj,cljs,cljc,bb,edn ,psp :ClojureSublimedEvalCode code='(ps.sc/letsc-select-prev!)'<CR>
-"noremap FileType clj,cljs,cljc,bb,edn ,psn :ClojureSublimedEvalCode code='(ps.sc/letsc-select-next!)'<CR>
-"noremap FileType clj,cljs,cljc,bb,edn ,psl :ClojureSublimedEvalCode code='(ps.sc/letsc-select-last!)'<CR>
-"noremap FileType clj,cljs,cljc,bb,edn ,psf :ClojureSublimedEvalCode code='(ps.sc/letsc-select-first!)'<CR>
-"noremap FileType clj,cljs,cljc,bb,edn ,psc :ClojureSublimedEvalCode code='(ps.sc/letsc-select-current!)'<CR>
-"noremap FileType clj,cljs,cljc,bb,edn ,psn :ClojureSublimedEvalCode code='(ps.sc/letsc-select-nth! <???>)'<CR>
 
 noremap <space>Cp :CopyPath<CR>
 

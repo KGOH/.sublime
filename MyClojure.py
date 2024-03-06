@@ -73,7 +73,8 @@ def my_on_success_callback(self):
             selected_ep_id_text = outer_vec_body.children[0].text
             selected_ep_id = None if selected_ep_id_text == 'nil' else int(selected_ep_id_text)
             vls = cs_parser.parse(eval.value).children[0].body.children[1].body.children
-            els = ["i: %3s, %3s;   v: %s"%(i, -len(vls)+i, str(cs_parser.as_obj(ch, eval.value))) for i, ch in enumerate(vls)]
+            i_width = len(str(len(vls)))
+            els = [("i: {i:>{i_width}}, {rev_i:>{rev_i_width}};    v: {v}").format(i=i, i_width=i_width, rev_i=-len(vls)+i, rev_i_width=i_width+1, v=str(cs_parser.as_obj(ch, eval.value))) for i, ch in enumerate(vls)]
             selected_index = selected_ep_id if selected_ep_id is not None else len(els) - 1
             self.view.window().show_quick_panel(els, selected_index=selected_index, flags=sublime.QuickPanelFlags.MONOSPACE_FONT, on_select=(lambda idx: on_select(self, eval, idx)))
         except Exception as e:
