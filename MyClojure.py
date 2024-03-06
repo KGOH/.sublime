@@ -56,3 +56,39 @@ class MyClojureSublimedEvalWithInsertCommand(sublime_plugin.TextCommand):
 
     def is_enabled(self):
         return cs_conn.ready(self.view.window()) and len(self.view.sel()) == 1
+
+
+def on_select(self, eval, idx):
+    eval.erase()
+    if idx > -1:
+        select_nth = "(do (ps.sc/letsc-select-nth! %s) (symbol \"#%s selected\"))"%(idx, idx)
+        self.view.window().run_command(cmd="clojure_sublimed_eval_code", args={"code": select_nth})
+
+
+
+def my_on_success_callback(self): 
+    def callback(eval):
+        try:
+            outer_vec_body = cs_parser.parse(eval.value).children[0].body
+            selected_ep_id_text = outer_vec_body.children[0].text
+            selected_ep_id = None if selected_ep_id_text == 'nil' else int(selected_ep_id_text)
+            vls = cs_parser.parse(eval.value).children[0].body.children[1].body.children
+            els = ["i: %3s, %3s;   v: %s"%(i, -len(vls)+i, str(cs_parser.as_obj(ch, eval.value))) for i, ch in enumerate(vls)]
+            selected_index = selected_ep_id if selected_ep_id is not None else len(els) - 1
+            self.view.window().show_quick_panel(els, selected_index=selected_index, flags=sublime.QuickPanelFlags.MONOSPACE_FONT, on_select=(lambda idx: on_select(self, eval, idx)))
+        except Exception as e:
+            print(e)
+            pass
+    return callback
+
+
+class MyClojureSublimedSelectCommand(sublime_plugin.TextCommand):
+    """  """
+    def run(self, edit):
+        state = cs_common.get_state(self.view.window())
+        letsc_start_fstr = "(ps.sc/letsc-select-start-no-mark! (quote %s))"
+        state.conn.eval(self.view, self.view.sel(), transform_fn=(lambda code, **kwargs: letsc_start_fstr%code), on_finish_callback=my_on_success_callback(self))
+
+
+    def is_enabled(self):
+        return cs_conn.ready(self.view.window())

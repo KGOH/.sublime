@@ -137,15 +137,15 @@ noremap FileType clj,cljs,cljc,bb,edn ,pu :ClojureSublimedEvalCode code='(do (ps
 noremap FileType clj,cljs,cljc,bb,edn ,pq :ClojureSublimedEvalCode code='(do (ps.sc/undefsc-all) (sc.api/dispose-all!) (ps.sc/drop-letsc-select!) :ps.sc/dispose)'<CR>
 
 "noremap FileType clj,cljs,cljc,bb,edn ,ps :MyClojureSublimedSelect<CR>
-noremap FileType clj,cljs,cljc,bb,edn ,pss :ClojureSublimedEval transform='(ps.sc/letsc-select-start! (quote %code))'<CR>
-noremap FileType clj,cljs,cljc,bb,edn ,psp :ClojureSublimedEvalCode code='(ps.sc/letsc-select-prev!)'<CR>
-noremap FileType clj,cljs,cljc,bb,edn ,psn :ClojureSublimedEvalCode code='(ps.sc/letsc-select-next!)'<CR>
-noremap FileType clj,cljs,cljc,bb,edn ,psl :ClojureSublimedEvalCode code='(ps.sc/letsc-select-last!)'<CR>
-noremap FileType clj,cljs,cljc,bb,edn ,psf :ClojureSublimedEvalCode code='(ps.sc/letsc-select-first!)'<CR>
-noremap FileType clj,cljs,cljc,bb,edn ,psc :ClojureSublimedEvalCode code='(ps.sc/letsc-select-current!)'<CR>
-noremap FileType clj,cljs,cljc,bb,edn ,psn :ClojureSublimedEvalCode code='(ps.sc/letsc-select-nth! <???>)'<CR>
+noremap FileType clj,cljs,cljc,bb,edn ,ps :MyClojureSublimedSelect<CR>
+"noremap FileType clj,cljs,cljc,bb,edn ,pss :ClojureSublimedEval transform='(ps.sc/letsc-select-start! (quote %code))'<CR>
+"noremap FileType clj,cljs,cljc,bb,edn ,psp :ClojureSublimedEvalCode code='(ps.sc/letsc-select-prev!)'<CR>
+"noremap FileType clj,cljs,cljc,bb,edn ,psn :ClojureSublimedEvalCode code='(ps.sc/letsc-select-next!)'<CR>
+"noremap FileType clj,cljs,cljc,bb,edn ,psl :ClojureSublimedEvalCode code='(ps.sc/letsc-select-last!)'<CR>
+"noremap FileType clj,cljs,cljc,bb,edn ,psf :ClojureSublimedEvalCode code='(ps.sc/letsc-select-first!)'<CR>
+"noremap FileType clj,cljs,cljc,bb,edn ,psc :ClojureSublimedEvalCode code='(ps.sc/letsc-select-current!)'<CR>
+"noremap FileType clj,cljs,cljc,bb,edn ,psn :ClojureSublimedEvalCode code='(ps.sc/letsc-select-nth! <???>)'<CR>
 
-noremap FileType clj,cljs,cljc,bb,edn ,, :MyClojureSublimedSelect<CR>
 noremap <space>Cp :CopyPath<CR>
 
 nnoremap FileType clj,cljs,cljc,bb,edn ,i :ClojureSublimedToggleInfo<CR>
