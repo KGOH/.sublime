@@ -99,14 +99,15 @@ vnoremap { :NvViLeftSquareBracket action=target mode=mode_visual target='{'<CR>
 nnoremap } :NvViRightSquareBracket action=target mode=mode_normal target='}'<CR>
 vnoremap } :NvViRightSquareBracket action=target mode=mode_visual target='}'<CR>
 
-" Paredit
-noremap FileType clj,cljs,cljc,bb,edn o A:ClojureSublimedInsertNewline<CR>
+
+"
+
+nnoremap gd :LspSymbolDefinition<CR> 
 
 nnoremap <space>a :ShowPanel panel=output.exec<CR>
 " Clojure Sublimed
-" nnoremap ,sj :ClojureSublimedConnectSocketRepl address=auto<CR>
-" "
 "inoremap FileType clj,cljs,cljc,bb,edn enter :ClojureSublimedInsertNewline<CR>
+noremap FileType clj,cljs,cljc,bb,edn o A:ClojureSublimedInsertNewline<CR>
 
 nnoremap FileType clj,cljs,cljc,bb,edn ,sc :ClojureSublimedConnectSocketRepl<CR>
 nnoremap FileType clj,cljs,cljc,bb,edn ,sj :MyClojureJackIn<CR> 
