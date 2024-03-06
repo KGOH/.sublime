@@ -3,6 +3,7 @@
 noremap <space><space> :ShowOverlay overlay=command_palette<CR>
 nnoremap <space>ff :MyHelm<CR>
 nnoremap <space>/ :ShowPanel panel=find_in_files<CR>
+nnoremap <space>ss :ShowPanel panel=find<CR>
 
 " Toggles
 nnoremap <space>ts :ToggleStatusBar<CR>
