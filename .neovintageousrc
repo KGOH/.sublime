@@ -125,18 +125,19 @@ nnoremap FileType clj,cljs,cljc,bb,edn ,eb :ClojureSublimedEvalBuffer<CR>
 nnoremap FileType clj,cljs,cljc,bb,edn ,ec :ClojureSublimedClearEvals<CR>
 nnoremap FileType clj,cljs,cljc,bb,edn ,eC :ClojureSublimedInterruptEval<CR>
 noremap FileType clj,cljs,cljc,bb,edn ,e; :MyClojureSublimedEvalToComment<CR>
-noremap FileType clj,cljs,cljc,bb,edn ,ep :ClojureSublimedEval transform='(as-> %code $ (do (require [(symbol :clojure.pprint)]) (require [(symbol :clojure.java.io)]) (with-open [w (clojure.java.io/writer "/tmp/sublimed_output.edn")] (clojure.pprint/pprint $ w)) $))'\|:OpenFile file='/tmp/sublimed_output.edn'<CR>
-"noremap FileType clj,cljs,cljc,bb,edn ,ep :ClojureSublimedEval transform='(as-> %code $ (do (require [(symbol :fipp.edn)]) (require [(symbol :clojure.java.io)]) $) (do (fipp.edn/pprint $ {:writer (clojure.java.io/writer "/tmp/sublimed_output.edn")}) $))'\|:OpenFile file='/tmp/sublimed_output.edn'<CR>
-noremap FileType clj,cljs,cljc,bb,edn ,ef :ClojureSublimedEval transform='(as-> %code $ (do (require [(symbol :clojure.java.io)]) (with-open [w (clojure.java.io/writer "/tmp/sublimed_output.edn")] (binding [*print-length* nil *out* w] (pr $))) $))'\|:OpenFile file='/tmp/sublimed_output.edn'<CR>
+noremap FileType clj,cljs,cljc,bb,edn ,ep :ClojureSublimedEval transform='(as-> %code $ (do (require [(symbol "clojure.pprint")]) (require [(symbol "clojure.java.io")]) (with-open [w (clojure.java.io/writer "/tmp/sublimed_output.edn")] (clojure.pprint/pprint $ w)) $))'\|:OpenFile file='/tmp/sublimed_output.edn'<CR>
+"noremap FileType clj,cljs,cljc,bb,edn ,ep :ClojureSublimedEval transform='(as-> %code $ (do (require [(symbol "fipp.edn")]) (require [(symbol "clojure.java.io")]) $) (do (fipp.edn/pprint $ {:writer (clojure.java.io/writer "/tmp/sublimed_output.edn")}) $))'\|:OpenFile file='/tmp/sublimed_output.edn'<CR>
+noremap FileType clj,cljs,cljc,bb,edn ,ef :ClojureSublimedEval transform='(as-> %code $ (do (require [(symbol "clojure.java.io")]) (with-open [w (clojure.java.io/writer "/tmp/sublimed_output.edn")] (binding [*print-length* nil *out* w] (pr $))) $))'\|:OpenFile file='/tmp/sublimed_output.edn'<CR>
+noremap FileType clj,cljs,cljc,bb,edn ,eF :ClojureSublimedEval transform='(as-> %code $ (do (require [(symbol "clojure.java.io")]) (with-open [w (clojure.java.io/writer "/tmp/sublimed_output.edn")] (binding [*print-length* nil *out* w] (print $))) $))'\|:OpenFile file='/tmp/sublimed_output.edn'<CR>
 
-nnoremap FileType clj,cljs,cljc,bb,edn ,pp :ClojureSublimedEvalCode code='(require [(symbol :sc.api)])'\|:MyClojureSublimedEvalWithInsert insert_str='(sc.api/spyqt)'<CR>
-nnoremap FileType clj,cljs,cljc,bb,edn ,pP :ClojureSublimedEvalCode code='(do (require [(symbol :sc.api)]) (ps.sc/undefsc-all) (sc.api/dispose-all!) (ps.sc/drop-letsc-select!) :ps.sc/dispose)'\|:MyClojureSublimedEvalWithInsert insert_str='(sc.api/spyqt)'<CR>
+nnoremap FileType clj,cljs,cljc,bb,edn ,pp :ClojureSublimedEvalCode code='(do (require [(symbol "ps.sc")]) (require [(symbol "sc.api")]))'\|:MyClojureSublimedEvalWithInsert insert_str='(sc.api/spyqt)'<CR>
+nnoremap FileType clj,cljs,cljc,bb,edn ,pP :ClojureSublimedEvalCode code='(do (require [(symbol "sc.api")]) (ps.sc/undefsc-all) (sc.api/dispose-all!) (ps.sc/drop-letsc-select!) :ps.sc/dispose)'\|:MyClojureSublimedEvalWithInsert insert_str='(sc.api/spyqt)'<CR>
 noremap FileType clj,cljs,cljc,bb,edn ,pl :ClojureSublimedEval transform='(ps.sc/letsc! (quote %code))'<CR>
 noremap FileType clj,cljs,cljc,bb,edn ,pa :ClojureSublimedEval transform='(ps.sc/letsc-all (quote %code))'<CR>
 noremap FileType clj,cljs,cljc,bb,edn ,pd :ClojureSublimedEvalCode code='(do (ps.sc/defsc!) :ps.sc/defsc-last)'<CR>
 noremap FileType clj,cljs,cljc,bb,edn ,pu :ClojureSublimedEvalCode code='(do (ps.sc/undefsc-all) :ps.sc/undef-all)'<CR>
 noremap FileType clj,cljs,cljc,bb,edn ,pq :ClojureSublimedEvalCode code='(do (ps.sc/undefsc-all) (sc.api/dispose-all!) (ps.sc/drop-letsc-select!) :ps.sc/dispose)'<CR>
-nnoremap FileType clj,cljs,cljc,bb,edn ,pb :ClojureSublimedEvalCode code='(require [(symbol :sc.api)])'\|:MyClojureSublimedEvalWithInsert insert_str='(sc.api/brk)'<CR>
+nnoremap FileType clj,cljs,cljc,bb,edn ,pb :ClojureSublimedEvalCode code='(require [(symbol "sc.api")])'\|:MyClojureSublimedEvalWithInsert insert_str='(sc.api/brk)'<CR>
 noremap FileType clj,cljs,cljc,bb,edn ,pn :ClojureSublimedEvalCode code='(sc.api/loose)'<CR>
 
 noremap FileType clj,cljs,cljc,bb,edn ,ps :MyClojureSublimedSelect<CR>
