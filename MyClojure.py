@@ -1,5 +1,6 @@
 import sublime, sublime_plugin
 import textwrap
+import re
 cs = __import__("Clojure Sublimed")
 cs_eval = cs.cs_eval
 cs_common = cs.cs_common
@@ -89,6 +90,81 @@ class MyClojureSublimedSelectCommand(sublime_plugin.TextCommand):
         state = cs_common.get_state(self.view.window())
         letsc_start_fstr = "(ps.sc/letsc-select-start-no-mark! (quote %s))"
         state.conn.eval(self.view, self.view.sel(), transform_fn=(lambda code, **kwargs: letsc_start_fstr%code), on_finish=my_on_success_callback(self))
+
+
+    def is_enabled(self):
+        return cs_conn.ready(self.view.window())
+
+
+def to_obj(node, string):
+    if 'token' == node.name and node.text:
+        s = node.text
+        if 'true' == s:
+            return True
+        elif 'false' == s:
+            return False
+        elif 'nil' == s:
+            return None
+        elif ':' == s[0]:
+            return s
+        elif re.fullmatch(r'[+-]?[0-9]*\.[0-9]*([eE][+-]?\d+)?', s):
+            return float(s)
+        elif re.fullmatch(r'[+-]?[0-9]+', s):
+            return int(s)
+        else:
+            text = string[node.start:node.end]
+    elif 'string' == node.name and node.body:
+        text = re.sub(r'\\[\\"rntfb]', cs_parser.unescape, node.body.text)
+    elif 'string' == node.name:
+        text = ''
+    elif 'source' == node.name:
+        return [to_obj(ch, string) for ch in node.children] 
+    elif 'parens' == node.name:
+        return tuple(to_obj(ch, string) for ch in node.body.children)
+    elif 'brackets' == node.name:
+        return [to_obj(ch, string) for ch in node.body.children]
+    elif 'braces' == node.name and node.open.text == '#{':
+        return {to_obj(ch, string) for ch in node.body.children}
+    elif 'braces' == node.name and node.open.text == '{':
+        return {to_obj(k_ch, string): to_obj(v_ch, string) for k_ch, v_ch in cs_parser.partition(node.body.children, 2)} 
+    else:
+        text = string[node.start:node.end]
+    return text
+
+
+def my_test_report_callback(self):
+    def callback(eval):
+        try:
+            if "failure" == eval.status:
+                view = eval.view
+                #parsed_view = cs_parser.parse_tree(view)
+
+                eval_obj = to_obj(cs_parser.parse(eval.value), eval.value)[0]
+                results = eval_obj[":results"]
+                this_ns_results = list(results.values())[0]
+                this_test_result = list(this_ns_results.values())[0]
+                to_highlight = [{"type": r[":type"], "line": r[":line"], "expected": r[":expected"].strip(), "actual": r[":actual"].strip()}
+                                for r in this_test_result 
+                                if ":pass" != r[":type"]] 
+
+                for h in to_highlight:
+                    highlight_region = view.line(sublime.Region(view.text_point(h["line"]-1, 0), view.text_point(h["line"], 0)))
+                    h_eval = cs_eval.Eval(view, highlight_region)
+                    h_value = "- %s | + %s"%(h["expected"], h["actual"])
+                    h_eval.update("failure", h_value, region=highlight_region)
+
+        except Exception as e:
+            print(e)
+
+    return callback 
+
+
+class MyClojureSublimedRunTestCommand(sublime_plugin.TextCommand):
+    """  """
+    def run(self, edit):
+        state = cs_common.get_state(self.view.window())
+        run_test_xform = "(do %code (require '[cider.nrepl.middleware.test]) (cider.nrepl.middleware.test/test-nss '{%ns [%symbol]}))"
+        state.conn.eval(self.view, self.view.sel(), transform_fn=cs_eval.format_code_fn(run_test_xform), on_finish_callback=my_test_report_callback(self))
 
 
     def is_enabled(self):
