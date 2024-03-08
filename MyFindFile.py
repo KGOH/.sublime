@@ -56,16 +56,53 @@ def shorten_str_left(str, max_len, ellipsis="..."):
         return ellipsis + str[-(max_len-len(ellipsis)):] 
 
 
+def safe_readlines(filename):
+    if not os.path.exists(filename):
+        return []
+    else: 
+        with open(filename, 'r') as file:
+            return file.readlines()
+
+
+FOLDER_HISTORY_FILE = os.path.join(sublime.packages_path(), 'User', 'FolderHistory.txt')
+
+
+def dedupe(seq):
+    seen = set()
+    seen_add = seen.add
+    return [x for x in seq if not (x in seen or seen_add(x))]
+
+
+def read_log_folder_history():
+    return safe_readlines(FOLDER_HISTORY_FILE) 
+
+
+def write_log_folder_history(folder):
+    new_history = dedupe([folder + "\n"] + read_log_folder_history())[:20]
+    with open(FOLDER_HISTORY_FILE, 'w') as file:
+        file.writelines(new_history)
+
+
 def open_folder(window, folder_path, new_window=False):
     if new_window:
         window.run_command(cmd="new_os_tab")
     window.run_command(cmd="open_folder_as_project", args={"folder": folder_path})
+    write_log_folder_history(folder_path)
 
 
 def new_file_dialog(window, path):
     create_file = (lambda input: window.open_file(os.path.join(current_folder, input)))
     supress = (lambda _: None) 
     window.show_input_panel("File name:", "", create_file, supress, supress) 
+
+
+class MyRecentFoldersCommand(sublime_plugin.WindowCommand):
+    def run(self, new_window=False):
+        els = read_log_folder_history()
+        def on_select(idx):
+            if idx >= 0:
+                open_folder(self.window, els[idx].strip(), new_window=new_window)
+        self.window.show_quick_panel(els, on_select=on_select)
 
 
 class MyFindFileCommand(sublime_plugin.WindowCommand):

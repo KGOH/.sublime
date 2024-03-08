@@ -73,9 +73,9 @@ nnoremap <space>pt :ToggleSidebarAndFocus<CR>
 nnoremap <space>pc :AdvancedNewFileNew<CR>
 nnoremap <space>pR :RevealInSideBar<CR>
 nnoremap <space>ps :ShowPanel panel=find_in_files<CR>
-"nnoremap <space>pp :PromptSelectWorkspace<CR>
+nnoremap <space>pp :MyRecentFolders new_window=false<CR>
+nnoremap <space>pP :MyRecentFolders new_window=true<CR>
 nnoremap <space>pl :MyFindFile only_folders=true<CR>
-nnoremap <space>pp :MyFindFile only_folders=true<CR>
 
 " Ace jump
 nnoremap <space>jj :AceJumpChar<CR>
