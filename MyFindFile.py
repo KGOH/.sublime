@@ -7,7 +7,7 @@ new_file = sublime.QuickPanelItem(trigger="    New file", annotation="Creates a 
 this_dir = sublime.QuickPanelItem(trigger="    This folder", annotation="Opens this folder in the current window")
 this_dir_proj = sublime.QuickPanelItem(trigger="    This folder as project", annotation="Opens this folder in a new window")
 
-class MyHelmCommand(sublime_plugin.WindowCommand):
+class MyFindFileCommand(sublime_plugin.WindowCommand):
     def run(self, only_folders=False):
         home = os.path.expanduser('~')
         start = self.window.extract_variables().get('folder', home)

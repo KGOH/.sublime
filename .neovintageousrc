@@ -1,7 +1,7 @@
 " A double quote character starts a comment.
 
 noremap <space><space> :ShowOverlay overlay=command_palette<CR>
-nnoremap <space>ff :MyHelm<CR>
+nnoremap <space>ff :MyFindFile<CR>
 nnoremap <space>/ :ShowPanel panel=find_in_files<CR>
 nnoremap <space>ss :ShowPanel panel=find<CR>
 
@@ -74,8 +74,8 @@ nnoremap <space>pc :AdvancedNewFileNew<CR>
 nnoremap <space>pR :RevealInSideBar<CR>
 nnoremap <space>ps :ShowPanel panel=find_in_files<CR>
 "nnoremap <space>pp :PromptSelectWorkspace<CR>
-nnoremap <space>pl :MyHelm only_folders=true<CR>
-nnoremap <space>pp :MyHelm only_folders=true<CR>
+nnoremap <space>pl :MyFindFile only_folders=true<CR>
+nnoremap <space>pp :MyFindFile only_folders=true<CR>
 
 " Ace jump
 nnoremap <space>jj :AceJumpChar<CR>
