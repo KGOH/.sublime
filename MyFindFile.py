@@ -78,7 +78,7 @@ def read_log_folder_history():
 
 
 def write_log_folder_history(folder):
-    new_history = dedupe([folder + "\n"] + read_log_folder_history())[:20]
+    new_history = dedupe([folder + "\n"] + read_log_folder_history())[:100]
     with open(FOLDER_HISTORY_FILE, 'w') as file:
         file.writelines(new_history)
 
