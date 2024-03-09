@@ -10,16 +10,16 @@
 ////  "context": [{"key": "my_vi_normal_mode"} 
 ////             ,{"key": "selector", "operator": "equal", "operand": "source.edn | source.clojure"} ]}
 //
- {"keys": ["enter"], "command": "clojure_sublimed_insert_newline",
-  "context":
-  [{"key": "vi_insert_mode_aware"}
-  ,{"key": "selector",
-    "operator": "equal",
-    "operand": "source.edn | source.clojure"}
-  ,{"key": "auto_complete_visible", "operator": "equal", "operand": false}
-  ,{"key": "panel_has_focus", "operator": "equal", "operand": false}]}
+// {"keys": ["enter"], "command": "clojure_sublimed_insert_newline",
+//  "context":
+//  [{"key": "vi_insert_mode_aware"}
+//  ,{"key": "selector",
+//    "operator": "equal",
+//    "operand": "source.edn | source.clojure"}
+//  ,{"key": "auto_complete_visible", "operator": "equal", "operand": false}
+//  ,{"key": "panel_has_focus", "operator": "equal", "operand": false}]}
   
-,{"keys": [" ", "p", "t"],
+{"keys": [" ", "p", "t"],
   "command": "toggle_sidebar_and_focus",
   "context": [{"key": "control", "operand": "sidebar_tree"}]}
 

@@ -109,7 +109,7 @@ nnoremap gd :LspSymbolDefinition<CR>
 nnoremap <space>a :ShowPanel panel=output.exec<CR>
 " Clojure Sublimed
 "inoremap FileType clj,cljs,cljc,bb,edn enter :ClojureSublimedInsertNewline<CR>
-noremap FileType clj,cljs,cljc,bb,edn o A:ClojureSublimedInsertNewline<CR>
+"noremap FileType clj,cljs,cljc,bb,edn o A:ClojureSublimedInsertNewline<CR>
 
 nnoremap FileType clj,cljs,cljc,bb,edn ,sc :ClojureSublimedConnectSocketRepl<CR>
 nnoremap FileType clj,cljs,cljc,bb,edn ,sj :MyClojureJackIn<CR> 
