@@ -158,13 +158,13 @@ noremap FileType clj,cljs,cljc,bb,edn ,tt :ClojureSublimedEval transform='(cloju
 
 
 " Paredit
-inoremap FileType ( :PareditOpenRound<CR>
-inoremap FileType ) :PareditCloseRound<CR>
-inoremap FileType [ :PareditOpenSquare<CR>
-inoremap FileType ] :PareditCloseSquare<CR>
-inoremap FileType { :PareditOpenCurly<CR>
-inoremap FileType } :PareditCloseCurly<CR>
-inoremap FileType " :PareditDoublequote<CR>
+"inoremap FileType ( :PareditOpenRound<CR>
+"inoremap FileType ) :PareditCloseRound<CR>
+"inoremap FileType [ :PareditOpenSquare<CR>
+"inoremap FileType ] :PareditCloseSquare<CR>
+"inoremap FileType { :PareditOpenCurly<CR>
+"inoremap FileType } :PareditCloseCurly<CR>
+"inoremap FileType " :PareditDoublequote<CR>
 "inoremap FileType clj,cljs,cljc,bb,edn <del> :PareditForwardDelete<CR>
 "inoremap FileType clj,cljs,cljc,bb,edn <BS> :PareditBackwardDelete<CR>
 "inoremap FileType clj,cljs,cljc,bb,edn C-k :PareditKill<CR>

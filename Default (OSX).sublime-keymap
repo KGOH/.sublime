@@ -31,20 +31,20 @@
 //             ["my_wait_for_repl"],
 //             ["clojure_sublimed_connect_nrepl_raw", {"address": "auto"}]]},
 //   "context": [{"key": "selector", "operator": "equal", "operand": "source.clojure"}]}  
-//,{"keys": ["("], "command": "paredit_open_round"
-// ,"context": [{"key": "should_paredit"}, {"key": "vi_insert_mode_aware"}]}
-//,{"keys": [")"], "command": "paredit_close_round"
-// ,"context": [{"key": "should_paredit"}, {"key": "vi_insert_mode_aware"}]}
-//,{"keys": ["["], "command": "paredit_open_square"
-// ,"context": [{"key": "should_paredit"}, {"key": "vi_insert_mode_aware"}]}
-//,{"keys": ["]"], "command": "paredit_close_square"
-// ,"context": [{"key": "should_paredit"}, {"key": "vi_insert_mode_aware"}]}
-//,{"keys": ["{"], "command": "paredit_open_curly"
-// ,"context": [{"key": "should_paredit"}, {"key": "vi_insert_mode_aware"}]}
-//,{"keys": ["}"], "command": "paredit_close_curly"
-// ,"context": [{"key": "should_paredit"}, {"key": "vi_insert_mode_aware"}]}
-//,{"keys": ["\""], "command": "paredit_doublequote"
-// ,"context": [{"key": "should_paredit"}, {"key": "vi_insert_mode_aware"}]}
+,{"keys": ["("], "command": "paredit_open_round"
+ ,"context": [{"key": "should_paredit"}, {"key": "vi_insert_mode_aware"}]}
+,{"keys": [")"], "command": "paredit_close_round"
+ ,"context": [{"key": "should_paredit"}, {"key": "vi_insert_mode_aware"}]}
+,{"keys": ["["], "command": "paredit_open_square"
+ ,"context": [{"key": "should_paredit"}, {"key": "vi_insert_mode_aware"}]}
+,{"keys": ["]"], "command": "paredit_close_square"
+ ,"context": [{"key": "should_paredit"}, {"key": "vi_insert_mode_aware"}]}
+,{"keys": ["{"], "command": "paredit_open_curly"
+ ,"context": [{"key": "should_paredit"}, {"key": "vi_insert_mode_aware"}]}
+,{"keys": ["}"], "command": "paredit_close_curly"
+ ,"context": [{"key": "should_paredit"}, {"key": "vi_insert_mode_aware"}]}
+,{"keys": ["\""], "command": "paredit_doublequote"
+ ,"context": [{"key": "should_paredit"}, {"key": "vi_insert_mode_aware"}]}
 ////,{
 ////  "keys": ["ctrl+j"],
 ////  "command": "paredit_newline",
