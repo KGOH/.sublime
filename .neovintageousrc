@@ -76,6 +76,7 @@ nnoremap <space>ps :ShowPanel panel=find_in_files<CR>
 nnoremap <space>pp :MyRecentFolders new_window=false<CR>
 nnoremap <space>pP :MyRecentFolders new_window=true<CR>
 nnoremap <space>pl :MyFindFile only_folders=true<CR>
+nnoremap <space>pL :MyRecentFolders new_window=true<CR>
 
 " Ace jump
 nnoremap <space>jj :AceJumpChar<CR>
@@ -187,3 +188,5 @@ nnoremap <space>kS :PareditBackwardSlurpSexp<CR>
 nnoremap <space>kB :PareditBackwardBarfSexp<CR>
 nnoremap <space>kf :PareditSplitSexp<CR>
 nnoremap <space>kj :PareditJoinSexp<CR>
+nnoremap <space>kr :PareditRaiseSexp<CR>
+
