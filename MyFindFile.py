@@ -90,9 +90,8 @@ def open_folder(window, folder_path, new_window=False):
         window = sublime.active_window() 
     Folder2Project.folder2project.open_folder_as_project(window, folder_path)
     write_log_folder_history(folder_path)
-    window.run_command(cmd="my_find_file")
-    #window.run_command(cmd="show_overlay", args={"overlay": "goto", "show_files": True}) 
-
+    sublime.set_timeout_async(delay=50, callback=(lambda: window.run_command(cmd="show_overlay", args={"overlay": "goto", "show_files": True})))
+     
 
 def new_file_dialog(window, path):
     create_file = (lambda input: window.open_file(os.path.join(current_folder, input)))
