@@ -2,6 +2,7 @@ import sublime
 import os
 import sublime_plugin
 import urllib.parse
+import Folder2Project.folder2project
 
 
 def current_folder_from_lsp_uri(view):
@@ -86,8 +87,11 @@ def write_log_folder_history(folder):
 def open_folder(window, folder_path, new_window=False):
     if new_window:
         window.run_command(cmd="new_os_tab")
-    window.run_command(cmd="open_folder_as_project", args={"folder": folder_path})
+        window = sublime.active_window() 
+    Folder2Project.folder2project.open_folder_as_project(window, folder_path)
     write_log_folder_history(folder_path)
+    window.run_command(cmd="my_find_file")
+    #window.run_command(cmd="show_overlay", args={"overlay": "goto", "show_files": True}) 
 
 
 def new_file_dialog(window, path):
