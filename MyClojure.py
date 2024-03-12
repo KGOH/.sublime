@@ -88,7 +88,7 @@ class MyClojureSublimedSelectCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         state = cs_common.get_state(self.view.window())
         letsc_start_fstr = "(ps.sc/letsc-select-start-no-mark! (quote %s))"
-        state.conn.eval(self.view, self.view.sel(), transform_fn=(lambda code, **kwargs: letsc_start_fstr%code), on_finish_callback=my_on_success_callback(self))
+        state.conn.eval(self.view, self.view.sel(), transform_fn=(lambda code, **kwargs: letsc_start_fstr%code), on_finish=my_on_success_callback(self))
 
 
     def is_enabled(self):
