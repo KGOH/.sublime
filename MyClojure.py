@@ -164,7 +164,7 @@ class MyClojureSublimedRunTestCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         state = cs_common.get_state(self.view.window())
         run_test_xform = "(do %code (require '[cider.nrepl.middleware.test]) (cider.nrepl.middleware.test/test-nss '{%ns [%symbol]}))"
-        state.conn.eval(self.view, self.view.sel(), transform_fn=cs_eval.format_code_fn(run_test_xform), on_finish_callback=my_test_report_callback(self))
+        state.conn.eval(self.view, self.view.sel(), transform_fn=cs_eval.format_code_fn(run_test_xform), on_finish=my_test_report_callback(self))
 
 
     def is_enabled(self):
