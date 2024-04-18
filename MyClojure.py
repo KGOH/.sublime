@@ -152,6 +152,7 @@ def regions_intersect(a_begin, a_end, b_begin, b_end):
     return a_begin <= b_end and a_end >= b_end
 
 
+
 def search_by_line(node, line_region, pred = lambda x: True, max_depth = 1000):
     """
     Search inside node what’s the deepest node that starts at the specified line.
@@ -198,8 +199,9 @@ def my_test_report_callback(self):
                             h_value = str(fail.obj[":actual"])
                             h_eval.update("failure", h_value, region=highlight_region)
 
-                #if errors := reports.get(":error", []):
-                #    print(len(errors), errors)
+                if errors := reports.obj.get(":error"):
+                    print(len(errors.obj), errors.obj[0])
+                    print(">>", repr(eval.value))
 
 
         except Exception as e:
@@ -210,17 +212,31 @@ def my_test_report_callback(self):
 
 clojure_sublimed_middleware_test = '''
 (ns clojure-sublimed.middleware.test
-  (:require [clojure.test]))
+  (:require [clojure.test]
+            [clojure.string]))
 
 (defn append-report! [m]
-  (when clojure.test/*report-counters*
-    (dosync 
-      (commute clojure.test/*report-counters* update-in [:reports (:type m)] (fnil conj []) m))))
+  (let [t (:type m)
+        stripped-m (-> m 
+                     (dissoc :type :file :expected :message))]
+    (when clojure.test/*report-counters*
+      (dosync 
+        (commute clojure.test/*report-counters* update-in [:reports (:type m)] (fnil conj []) stripped-m)))))
+
+(defn process-error [{:as m :keys [file actual]}]
+  (println '>>>>>>>>>>> 
+    file
+    (some->>
+      (.getStackTrace ^Throwable actual)
+      (map #(clojure.string/includes? (.getClassName ^StackTraceElement %) file))
+      #_#_first
+      .getLineNumber))
+  (assoc m :actual (.getMessage actual)))
 
 (defmulti report :type)
 (defmethod report :default [_])
+(defmethod report :error [m] (append-report! (process-error m))) 
 (defmethod report :fail [m] (append-report! m)) 
-(defmethod report :error [m] (append-report! m)) 
 '''
 
 
@@ -231,6 +247,7 @@ with_report_fstr = \
 ''' (let [clojure-test-report clojure.test/report]''' \
 '''  (with-bindings {#'clojure.test/report (fn [m] (clojure-test-report m) (clojure-sublimed.middleware.test/report m))}''' \
 '''    %s)))'''
+print(with_report_fstr)
 
 
 class MyClojureSublimedRunTestCommand(sublime_plugin.TextCommand):

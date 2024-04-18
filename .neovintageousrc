@@ -7,7 +7,9 @@ nnoremap <space>ss :ShowPanel panel=find<CR>
 
 " Toggles
 nnoremap <space>ts :ToggleStatusBar<CR>
+nnoremap <space>tg :ToggleSetting setting=gutter<CR>
 nnoremap <space>tn :ToggleSetting setting=line_numbers<CR>
+nnoremap <space>tw :ToggleSetting setting=word_wrap<CR> 
 nnoremap <space>tm :ToggleMinimap<CR>
 nnoremap <space>tM :ToggleMenu<CR>
 nnoremap <space>tt :ToggleTabs<CR>
@@ -79,9 +81,9 @@ nnoremap <space>pl :MyFindFile only_folders=true<CR>
 nnoremap <space>pL :MyRecentFolders new_window=true<CR>
 
 " Ace jump
-nnoremap <space>jj :AceJumpChar<CR>
-nnoremap <space>jw :AceJumpWord<CR>
-nnoremap <space>jl :AceJumpLine<CR>
+noremap <space>jj :AceJumpChar<CR>
+noremap <space>jw :AceJumpWord<CR>
+noremap <space>jl :AceJumpLine<CR>
 
 " Folds 
 nnoremap zr :UnfoldAll<CR>
@@ -108,56 +110,56 @@ nnoremap gd :LspSymbolDefinition<CR>
 
 nnoremap <space>a :ShowPanel panel=output.exec<CR>
 " Clojure Sublimed
-"inoremap FileType clj,cljs,cljc,bb,edn enter :ClojureSublimedInsertNewline<CR>
-"noremap FileType clj,cljs,cljc,bb,edn o A:ClojureSublimedInsertNewline<CR>
+"inoremap  enter :ClojureSublimedInsertNewline<CR>
+"noremap  o A:ClojureSublimedInsertNewline<CR>
 
-nnoremap FileType clj,cljs,cljc,bb,edn ,sc :ClojureSublimedConnectSocketRepl<CR>
-nnoremap FileType clj,cljs,cljc,bb,edn ,sj :MyClojureJackIn<CR> 
-nnoremap FileType clj,cljs,cljc,bb,edn ,srd :ExecutorExecuteShell command='freeport > .repl-port && echo "$(<.repl-port)" && clojure  -X clojure.core.server/start-server :name repl :port "$(<.repl-port)" :accept clojure.core.server/repl :server-daemon false'<CR>
-nnoremap FileType clj,cljs,cljc,bb,edn ,srl :ExecutorExecuteShell command='freeport > .repl-port && echo "$(<.repl-port)" && lein repl :headless :port $(<.repl-port)'<CR>
-nnoremap FileType clj,cljs,cljc,bb,edn ,sa :ShowPanel panel=output.exec<CR>
+nnoremap  ,sc :ClojureSublimedConnectSocketRepl<CR>
+nnoremap  ,sj :MyClojureJackIn<CR> 
+nnoremap  ,srd :ExecutorExecuteShell command='freeport > .repl-port && echo "$(<.repl-port)" && clojure  -X clojure.core.server/start-server :name repl :port "$(<.repl-port)" :accept clojure.core.server/repl :server-daemon false'<CR>
+nnoremap  ,srl :ExecutorExecuteShell command='freeport > .repl-port && echo "$(<.repl-port)" && lein repl :headless :port $(<.repl-port)'<CR>
+nnoremap  ,sa :ShowPanel panel=output.exec<CR>
 
-noremap FileType clj,cljs,cljc,bb,edn o A:ClojureSublimedInsertNewline<CR>
-noremap FileType clj,cljs,cljc,bb,edn O kA:ClojureSublimedInsertNewline<CR>
+noremap  o A:ClojureSublimedInsertNewline<CR>
+noremap  O kA:ClojureSublimedInsertNewline<CR>
 
-noremap FileType clj,cljs,cljc,bb,edn ,ee :ClojureSublimedEval<CR>
-nnoremap FileType clj,cljs,cljc,bb,edn ,eb :ClojureSublimedEvalBuffer<CR>
-nnoremap FileType clj,cljs,cljc,bb,edn ,ec :ClojureSublimedClearEvals<CR>
-nnoremap FileType clj,cljs,cljc,bb,edn ,eC :ClojureSublimedInterruptEval<CR>
-noremap FileType clj,cljs,cljc,bb,edn ,e; :MyClojureSublimedEvalToComment<CR>
-noremap FileType clj,cljs,cljc,bb,edn ,ep :ClojureSublimedEval transform='(as-> %code $ (do (require [(symbol "clojure.pprint")]) (require [(symbol "clojure.java.io")]) (with-open [w (clojure.java.io/writer "/tmp/sublimed_output.edn")] (clojure.pprint/pprint $ w)) $))'\|:OpenFile file='/tmp/sublimed_output.edn'<CR>
-"noremap FileType clj,cljs,cljc,bb,edn ,ep :ClojureSublimedEval transform='(as-> %code $ (do (require [(symbol "fipp.edn")]) (require [(symbol "clojure.java.io")]) $) (do (fipp.edn/pprint $ {:writer (clojure.java.io/writer "/tmp/sublimed_output.edn")}) $))'\|:OpenFile file='/tmp/sublimed_output.edn'<CR>
-noremap FileType clj,cljs,cljc,bb,edn ,ef :ClojureSublimedEval transform='(as-> %code $ (do (require [(symbol "clojure.java.io")]) (with-open [w (clojure.java.io/writer "/tmp/sublimed_output.edn")] (binding [*print-length* nil *out* w] (pr $))) $))'\|:OpenFile file='/tmp/sublimed_output.edn'<CR>
-noremap FileType clj,cljs,cljc,bb,edn ,eF :ClojureSublimedEval transform='(as-> %code $ (do (require [(symbol "clojure.java.io")]) (with-open [w (clojure.java.io/writer "/tmp/sublimed_output.edn")] (binding [*print-length* nil *out* w] (print $))) $))'\|:OpenFile file='/tmp/sublimed_output.edn'<CR>
+noremap  ,ee :ClojureSublimedEval<CR>
+nnoremap  ,eb :ClojureSublimedEvalBuffer<CR>
+nnoremap  ,ec :ClojureSublimedClearEvals<CR>
+nnoremap  ,eC :ClojureSublimedInterruptEval<CR>
+noremap  ,e; :MyClojureSublimedEvalToComment<CR>
+noremap  ,ep :ClojureSublimedEval transform='(as-> %code $ (do (require [(symbol "clojure.pprint")]) (require [(symbol "clojure.java.io")]) (with-open [w (clojure.java.io/writer "/tmp/sublimed_output.edn")] (clojure.pprint/pprint $ w)) $))'\|:OpenFile file='/tmp/sublimed_output.edn'<CR>
+"noremap  ,ep :ClojureSublimedEval transform='(as-> %code $ (do (require [(symbol "fipp.edn")]) (require [(symbol "clojure.java.io")]) $) (do (fipp.edn/pprint $ {:writer (clojure.java.io/writer "/tmp/sublimed_output.edn")}) $))'\|:OpenFile file='/tmp/sublimed_output.edn'<CR>
+noremap  ,ef :ClojureSublimedEval transform='(as-> %code $ (do (require [(symbol "clojure.java.io")]) (with-open [w (clojure.java.io/writer "/tmp/sublimed_output.edn")] (binding [*print-length* nil *out* w] (pr $))) $))'\|:OpenFile file='/tmp/sublimed_output.edn'<CR>
+noremap  ,eF :ClojureSublimedEval transform='(as-> %code $ (do (require [(symbol "clojure.java.io")]) (with-open [w (clojure.java.io/writer "/tmp/sublimed_output.edn")] (binding [*print-length* nil *out* w] (print $))) $))'\|:OpenFile file='/tmp/sublimed_output.edn'<CR>
 
-nnoremap FileType clj,cljs,cljc,bb,edn ,pp :ClojureSublimedEvalCode code='(do (require [(symbol "ps.sc")]) (require [(symbol "sc.api")]))'\|:MyClojureSublimedEvalWithInsert insert_str='(sc.api/spyqt)'<CR>
-nnoremap FileType clj,cljs,cljc,bb,edn ,pP :ClojureSublimedEvalCode code='(do (require [(symbol "sc.api")]) (ps.sc/undefsc-all) (sc.api/dispose-all!) (ps.sc/drop-letsc-select!) :ps.sc/dispose)'\|:MyClojureSublimedEvalWithInsert insert_str='(sc.api/spyqt)'<CR>
-noremap FileType clj,cljs,cljc,bb,edn ,pl :ClojureSublimedEval transform='(ps.sc/letsc! (quote %code))'<CR>
-noremap FileType clj,cljs,cljc,bb,edn ,pa :ClojureSublimedEval transform='(ps.sc/letsc-all (quote %code))'<CR>
-noremap FileType clj,cljs,cljc,bb,edn ,pd :ClojureSublimedEvalCode code='(do (ps.sc/defsc!) :ps.sc/defsc-last)'<CR>
-noremap FileType clj,cljs,cljc,bb,edn ,pu :ClojureSublimedEvalCode code='(do (ps.sc/undefsc-all) :ps.sc/undef-all)'<CR>
-noremap FileType clj,cljs,cljc,bb,edn ,pq :ClojureSublimedEvalCode code='(do (ps.sc/undefsc-all) (sc.api/dispose-all!) (ps.sc/drop-letsc-select!) :ps.sc/dispose)'<CR>
-nnoremap FileType clj,cljs,cljc,bb,edn ,pb :ClojureSublimedEvalCode code='(require [(symbol "sc.api")])'\|:MyClojureSublimedEvalWithInsert insert_str='(sc.api/brk)'<CR>
-noremap FileType clj,cljs,cljc,bb,edn ,pn :ClojureSublimedEvalCode code='(sc.api/loose)'<CR>
+nnoremap  ,pp :ClojureSublimedEvalCode code='(do (require [(symbol "ps.sc")]) (require [(symbol "sc.api")]))'\|:MyClojureSublimedEvalWithInsert insert_str='(sc.api/spyqt)'<CR>
+nnoremap  ,pP :ClojureSublimedEvalCode code='(do (require [(symbol "sc.api")]) (ps.sc/undefsc-all) (sc.api/dispose-all!) (ps.sc/drop-letsc-select!) :ps.sc/dispose)'\|:MyClojureSublimedEvalWithInsert insert_str='(sc.api/spyqt)'<CR>
+noremap  ,pl :ClojureSublimedEval transform='(ps.sc/letsc! (quote %code))'<CR>
+noremap  ,pa :ClojureSublimedEval transform='(ps.sc/letsc-all (quote %code))'<CR>
+noremap  ,pd :ClojureSublimedEvalCode code='(do (ps.sc/defsc!) :ps.sc/defsc-last)'<CR>
+noremap  ,pu :ClojureSublimedEvalCode code='(do (ps.sc/undefsc-all) :ps.sc/undef-all)'<CR>
+noremap  ,pq :ClojureSublimedEvalCode code='(do (ps.sc/undefsc-all) (sc.api/dispose-all!) (ps.sc/drop-letsc-select!) :ps.sc/dispose)'<CR>
+nnoremap  ,pb :ClojureSublimedEvalCode code='(require [(symbol "sc.api")])'\|:MyClojureSublimedEvalWithInsert insert_str='(sc.api/brk)'<CR>
+noremap  ,pn :ClojureSublimedEvalCode code='(sc.api/loose)'<CR>
 
-noremap FileType clj,cljs,cljc,bb,edn ,ps :MyClojureSublimedSelect<CR>
+noremap  ,ps :MyClojureSublimedSelect<CR>
 
 noremap <space>Cp :CopyPath<CR>
 
-nnoremap FileType clj,cljs,cljc,bb,edn ,i :ClojureSublimedToggleInfo<CR>
-nnoremap FileType clj,cljs,cljc,bb,edn ,Te :ClojureSublimedToggleTrace<CR>
-nnoremap FileType clj,cljs,cljc,bb,edn ,Td :ClojureSublimedToggleSymbol<CR>
+nnoremap  ,i :ClojureSublimedToggleInfo<CR>
+nnoremap  ,Te :ClojureSublimedToggleTrace<CR>
+nnoremap  ,Td :ClojureSublimedToggleSymbol<CR>
 
-nnoremap FileType clj,cljs,cljc,bb,edn ,y :ClojureSublimedCopy<CR>
+nnoremap  ,y :ClojureSublimedCopy<CR>
 
-nnoremap FileType clj,cljs,cljc,bb,edn ,== :ClojureSublimedReindentLines<CR>
-nnoremap FileType clj,cljs,cljc,bb,edn ,=r :ClojureSublimedReindentLines<CR>
-nnoremap FileType clj,cljs,cljc,bb,edn ,=b :ClojureSublimedReindentBuffer<CR>
+nnoremap  ,== :ClojureSublimedReindentLines<CR>
+nnoremap  ,=r :ClojureSublimedReindentLines<CR>
+nnoremap  ,=b :ClojureSublimedReindentBuffer<CR>
 
-nnoremap FileType clj,cljs,cljc,bb,edn ,ta :ClojureSublimedEvalCode code='(clojure.test/run-all-tests)'<CR>
-nnoremap FileType clj,cljs,cljc,bb,edn ,tn :ClojureSublimedEvalCode code='(clojure.test/run-tests)'<CR>
-noremap FileType clj,cljs,cljc,bb,edn ,tt :ClojureSublimedEval transform='(clojure.test/run-test-var %code)'<CR>
-noremap FileType clj,cljs,cljc,bb,edn ,tT :MyClojureSublimedRunTest run_test_xform='(clojure.test/run-test-var %code)'<CR>
+nnoremap  ,ta :ClojureSublimedEvalCode code='(clojure.test/run-all-tests)'<CR>
+nnoremap  ,tn :ClojureSublimedEvalCode code='(clojure.test/run-tests)'<CR>
+noremap  ,tT :ClojureSublimedEval transform='(clojure.test/run-test-var %code)'<CR>
+noremap  ,tt :MyClojureSublimedRunTest run_test_xform='(clojure.test/run-test-var %code)'<CR>
 
 
 " Paredit
@@ -168,10 +170,10 @@ noremap FileType clj,cljs,cljc,bb,edn ,tT :MyClojureSublimedRunTest run_test_xfo
 "inoremap FileType { :PareditOpenCurly<CR>
 "inoremap FileType } :PareditCloseCurly<CR>
 "inoremap FileType " :PareditDoublequote<CR>
-"inoremap FileType clj,cljs,cljc,bb,edn <del> :PareditForwardDelete<CR>
-"inoremap FileType clj,cljs,cljc,bb,edn <BS> :PareditBackwardDelete<CR>
-"inoremap FileType clj,cljs,cljc,bb,edn C-k :PareditKill<CR>
-"nnoremap FileType clj,cljs,cljc,bb,edn S-d :PareditKill<CR>
+"inoremap  <del> :PareditForwardDelete<CR>
+"inoremap  <BS> :PareditBackwardDelete<CR>
+"inoremap  C-k :PareditKill<CR>
+"nnoremap  S-d :PareditKill<CR>
 nnoremap <space>kdx :PareditKillExpression<CR>
 nnoremap <space>kdw :PareditForwardKillWord<CR>
 nnoremap <space>kdW :PareditBackwardKillWord<CR>

@@ -94,7 +94,7 @@ def open_folder(window, folder_path, new_window=False):
      
 
 def new_file_dialog(window, path):
-    create_file = (lambda input: window.open_file(os.path.join(current_folder, input)))
+    create_file = (lambda input: window.open_file(os.path.join(path, input)))
     supress = (lambda _: None) 
     window.show_input_panel("File name:", "", create_file, supress, supress) 
 
