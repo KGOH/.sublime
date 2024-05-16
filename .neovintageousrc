@@ -131,7 +131,8 @@ noremap  ,ep :ClojureSublimedEval transform='(as-> %code $ (do (require [(symbol
 "noremap  ,ep :ClojureSublimedEval transform='(as-> %code $ (do (require [(symbol "fipp.edn")]) (require [(symbol "clojure.java.io")]) $) (do (fipp.edn/pprint $ {:writer (clojure.java.io/writer "/tmp/sublimed_output.edn")}) $))'\|:OpenFile file='/tmp/sublimed_output.edn'<CR>
 noremap  ,ef :ClojureSublimedEval transform='(as-> %code $ (do (require [(symbol "clojure.java.io")]) (with-open [w (clojure.java.io/writer "/tmp/sublimed_output.edn")] (binding [*print-length* nil *out* w] (pr $))) $))'\|:OpenFile file='/tmp/sublimed_output.edn'<CR>
 noremap  ,eF :ClojureSublimedEval transform='(as-> %code $ (do (require [(symbol "clojure.java.io")]) (with-open [w (clojure.java.io/writer "/tmp/sublimed_output.edn")] (binding [*print-length* nil *out* w] (print $))) $))'\|:OpenFile file='/tmp/sublimed_output.edn'<CR>
-
+noremap  ,em :ClojureSublimedEval expand=true transform='(macroexpand-1 (quote %code))'<CR>
+noremap  ,eM :ClojureSublimedEval expand=true transform='(do (require [(symbol "clojure.walk")]) (clojure.walk/macroexpand-all (quote %code)))'<CR>
 nnoremap  ,pp :ClojureSublimedEvalCode code='(do (require [(symbol "ps.sc")]) (require [(symbol "sc.api")]))'\|:MyClojureSublimedEvalWithInsert insert_str='(sc.api/spyqt)'<CR>
 nnoremap  ,pP :ClojureSublimedEvalCode code='(do (require [(symbol "sc.api")]) (ps.sc/undefsc-all) (sc.api/dispose-all!) (ps.sc/drop-letsc-select!) :ps.sc/dispose)'\|:MyClojureSublimedEvalWithInsert insert_str='(sc.api/spyqt)'<CR>
 noremap  ,pl :ClojureSublimedEval transform='(ps.sc/letsc! (quote %code))'<CR>
