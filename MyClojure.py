@@ -224,7 +224,7 @@ clojure_sublimed_middleware_test = '''
         (commute clojure.test/*report-counters* update-in [:reports (:type m)] (fnil conj []) stripped-m)))))
 
 (defn process-error [{:as m :keys [file actual]}]
-  (println '>>>>>>>>>>> 
+  #_(println '>>>>>>>>>>> 
     file
     (some->>
       (.getStackTrace ^Throwable actual)
