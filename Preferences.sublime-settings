@@ -3,6 +3,7 @@
     [
         "Vintage",
     ],
+    "spell_check": true,
     "theme": "Adaptive.sublime-theme",
     //"color_scheme": "Alabaster Mono.sublime-color-scheme",
     "color_scheme": "auto",
@@ -21,15 +22,20 @@
     // Valid values are "smooth", "phase", "blink" and "solid". Previous
     // versions of Sublime Text used "smooth" by default.
     "caret_style": "solid",
+    "draw_white_space": ["all_tabs", "selection", "trailing", "isolated"],
     "draw_indent_guides": false,
     "file_tab_style": "square",
-    // "animation_enabled": false,
+    "animation_enabled": false,
     "highlight_modified_tabs": true,
     "show_tab_close_buttons": false,
     "enable_tab_scrolling": true,
     "hardware_acceleration": "opengl",
 
-
+    "save_on_focus_lost": true,
+    "trim_trailing_white_space_on_save": "all", 
+    "trim_only_modified_white_space": true,
+    "ensure_newline_at_eof_on_save": true,
+ 
     "create_window_at_startup": false,
     "native_tabs": "preferred",
     "hide_tab_scrolling_buttons": true,
@@ -43,6 +49,8 @@
 
     "tab_size": 4,
     "translate_tabs_to_spaces": true,
+    "detect_indentation": false,
+    "indent_to_bracket": true,
 
     "line_numbers": false, 
     "highlight_line": true,

@@ -66,7 +66,7 @@ class MyClojureJackInCommand(sublime_plugin.WindowCommand):
         dir = project_dir(self) 
         if os.path.isfile(os.path.join(dir,'project.clj')):
             self.window.run_command(cmd="executor_execute_shell", args={'dir': dir, "command": '''freeport > .repl-port && echo "$(<.repl-port)" && JVM_OPTS=-Dclojure.server.repl="{:port,$(<.repl-port),:accept,clojure.core.server/repl}" lein repl :headless'''})
-            sublime.set_timeout_async(delay=3000, callback=(lambda: self.window.run_command(cmd="clojure_sublimed_connect_nrepl_raw", args={"address": 'auto'})))
+            self.window.run_command(cmd="clojure_sublimed_connect_nrepl_raw", args={"address": 'auto', "timeout": 30})
         else:
             self.window.run_command(cmd="executor_execute_shell", args={'dir': dir, "command": """clojure -A:dev -M -e '(-> (clojure.core.server/start-server {:name "repl" :port 0 :accept (symbol "clojure.core.server/repl") :server-daemon false}) .getLocalPort (doto println) (->> (spit ".repl-port")))'"""})
-            sublime.set_timeout_async(delay=3000, callback=(lambda: self.window.run_command(cmd="clojure_sublimed_connect_socket_repl", args={"address": 'auto'})))
+            self.window.run_command(cmd="clojure_sublimed_connect_socket_repl", args={"address": 'auto', "timeout": 30})

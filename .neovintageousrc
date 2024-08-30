@@ -1,4 +1,5 @@
 " A double quote character starts a comment.
+set ignorecase
 
 noremap <space><space> :ShowOverlay overlay=command_palette<CR>
 nnoremap <space>ff :MyFindFile<CR>
@@ -122,7 +123,8 @@ nnoremap  ,sa :ShowPanel panel=output.exec<CR>
 noremap  o A:ClojureSublimedInsertNewline<CR>
 noremap  O kA:ClojureSublimedInsertNewline<CR>
 
-noremap  ,ee :ClojureSublimedEval<CR>
+noremap  ,ee :ClojureSublimedEvalPreviousForm<CR>
+noremap  ,er :ClojureSublimedEval<CR>
 nnoremap  ,eb :ClojureSublimedEvalBuffer<CR>
 nnoremap  ,ec :ClojureSublimedClearEvals<CR>
 nnoremap  ,eC :ClojureSublimedInterruptEval<CR>
@@ -134,7 +136,7 @@ noremap  ,eF :ClojureSublimedEval transform='(as-> %code $ (do (require [(symbol
 noremap  ,em :ClojureSublimedEval expand=true transform='(macroexpand-1 (quote %code))'<CR>
 noremap  ,eM :ClojureSublimedEval expand=true transform='(do (require [(symbol "clojure.walk")]) (clojure.walk/macroexpand-all (quote %code)))'<CR>
 nnoremap  ,pp :ClojureSublimedEvalCode code='(do (require [(symbol "ps.sc")]) (require [(symbol "sc.api")]))'\|:MyClojureSublimedEvalWithInsert insert_str='(sc.api/spyqt)'<CR>
-nnoremap  ,pP :ClojureSublimedEvalCode code='(do (require [(symbol "sc.api")]) (ps.sc/undefsc-all) (sc.api/dispose-all!) (ps.sc/drop-letsc-select!) :ps.sc/dispose)'\|:MyClojureSublimedEvalWithInsert insert_str='(sc.api/spyqt)'<CR>
+nnoremap  ,pP :ClojureSublimedEvalCode code='(do (require [(symbol "ps.sc")]) (require [(symbol "sc.api")]) (ps.sc/undefsc-all) (sc.api/dispose-all!) (ps.sc/drop-letsc-select!) :ps.sc/dispose)'\|:MyClojureSublimedEvalWithInsert insert_str='(sc.api/spyqt)'<CR>
 noremap  ,pl :ClojureSublimedEval transform='(ps.sc/letsc! (quote %code))'<CR>
 noremap  ,pa :ClojureSublimedEval transform='(ps.sc/letsc-all (quote %code))'<CR>
 noremap  ,pd :ClojureSublimedEvalCode code='(do (ps.sc/defsc!) :ps.sc/defsc-last)'<CR>
@@ -162,6 +164,7 @@ nnoremap  ,tn :ClojureSublimedEvalCode code='(clojure.test/run-tests)'<CR>
 noremap  ,tT :ClojureSublimedEval transform='(clojure.test/run-test-var %code)'<CR>
 noremap  ,tt :MyClojureSublimedRunTest run_test_xform='(clojure.test/run-test-var %code)'<CR>
 
+noremap ,r :LspCodeActions<CR>
 
 " Paredit
 "inoremap FileType ( :PareditOpenRound<CR>

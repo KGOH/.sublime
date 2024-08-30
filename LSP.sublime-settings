@@ -2,6 +2,7 @@
 {
     "show_view_status": false,
     "show_code_actions": "bulb",
+    //"log_debug": true,
     //"log_server": ["panel"],
     //"clients": {
     //    "clojure-lsp": {
