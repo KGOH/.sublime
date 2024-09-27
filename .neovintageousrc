@@ -198,3 +198,4 @@ nnoremap <space>kf :PareditSplitSexp<CR>
 nnoremap <space>kj :PareditJoinSexp<CR>
 nnoremap <space>kr :PareditRaiseSexp<CR>
 
+nnoremap FileType sql <cr> :MySql<CR>
