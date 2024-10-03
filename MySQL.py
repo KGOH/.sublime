@@ -66,8 +66,9 @@ class MySqlCommand(sublime_plugin.TextCommand):
         tmp_file = "/tmp/sql_output.sql"
         sql_cmd = None
         if "ch" == db_client:
-            password = "--password ${CLICKHOUSE_KEY}" if not "--password" in db_header else ""
-            sql_cmd = f"~/clickhouse client {db_header} {password} --queries-file {sql_file_path} --output-format PrettyCompact > {tmp_file}"
+            password = "--password ${CLICKHOUSE_KEY}" if not "--password" in db_header                                          else ""
+            fmt      = "--output-format PrettyCompact" if (not '--output-format' in db_header) and (not '--format' in db_header) else ""
+            sql_cmd = f"~/clickhouse client {db_header} {password} {fmt} --queries-file {sql_file_path} > {tmp_file}"
         elif "pg" == db_client:
             sql_cmd = f"psql {db_header} -f {sql_file_path} -o {tmp_file}"
 
