@@ -1,1 +1,6 @@
 FolderHistory.txt
+AliasHistory.txt
+Dictionaries/
+.DS_Store
+.clj-kondo
+.lsp

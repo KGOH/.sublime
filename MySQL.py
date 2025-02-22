@@ -63,11 +63,11 @@ class MySqlCommand(sublime_plugin.TextCommand):
         return tmp_file
 
     def build_sql_command(self, db_client, db_header, sql_file_path):
-        tmp_file = "/tmp/sql_output.sql"
+        tmp_file = "/tmp/sql_output.txt"
         sql_cmd = None
         if "ch" == db_client:
             password = "--password ${CLICKHOUSE_KEY}" if not "--password" in db_header                                          else ""
-            fmt      = "--output-format PrettyCompact" if (not '--output-format' in db_header) and (not '--format' in db_header) else ""
+            fmt      = "--output-format PrettyCompactMonoblock" if (not '--output-format' in db_header) and (not '--format' in db_header) else ""
             sql_cmd = f"~/clickhouse client {db_header} {password} {fmt} --queries-file {sql_file_path} > {tmp_file}"
         elif "pg" == db_client:
             sql_cmd = f"psql {db_header} -f {sql_file_path} -o {tmp_file}"
@@ -89,7 +89,7 @@ class MySqlCommand(sublime_plugin.TextCommand):
         return ret
 
     def display_result(self, cmd, output, out_file):
-        res_file = "/tmp/sql_res.sql"
+        res_file = "/tmp/sql_res.txt"
         with open(out_file, 'r') as f:
             sql_output = f.read()
         cmd_comment = f"-- $ {cmd}"

@@ -1,4 +1,7 @@
 // Clojure Sublimed Settings - User
 { 
-    "eval_shared": "(do (set! *warn-on-reflection* true) (set! *print-namespace-maps* false))"    
+    //"debug": true,
+    "eval_shared": "(do (set! *warn-on-reflection* true) (set! *print-namespace-maps* false))"
+    //"eval_shared": "(do (set! *warn-on-reflection* true) (set! *print-namespace-maps* false) (require 'pjstadig.humane-test-output) (pjstadig.humane-test-output/activate!))"
+    //,"formatter": "cljfmt"
 }

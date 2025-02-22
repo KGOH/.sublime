@@ -6,6 +6,10 @@ nnoremap <space>ff :MyFindFile<CR>
 nnoremap <space>/ :ShowPanel panel=find_in_files<CR>
 nnoremap <space>ss :ShowPanel panel=find<CR>
 
+" Sublundo
+noremap <space>uu :Sublundo command=undo<CR>
+noremap <space>ur :Sublundo command=redo<CR>
+
 " Toggles
 nnoremap <space>ts :ToggleStatusBar<CR>
 nnoremap <space>tg :ToggleSetting setting=gutter<CR>
@@ -81,6 +85,13 @@ nnoremap <space>pP :MyRecentFolders new_window=true<CR>
 nnoremap <space>pl :MyFindFile only_folders=true<CR>
 nnoremap <space>pL :MyRecentFolders new_window=true<CR>
 
+" MultiCursors
+vnoremap <space>ma :FindAllUnder<CR>
+"vnoremap <space>mA :FindUnder<CR>
+vnoremap <space>mn :FindUnderExpand<CR>
+vnoremap <space>mN :FindUnderExpandSkip<CR>
+vnoremap <space>mu :SoftUndo<CR>
+
 " Ace jump
 noremap <space>jj :AceJumpChar<CR>
 noremap <space>jw :AceJumpWord<CR>
@@ -107,7 +118,7 @@ vnoremap } :NvViRightSquareBracket action=target mode=mode_visual target='}'<CR>
 
 "
 
-nnoremap gd :LspSymbolDefinition<CR> 
+nnoremap gd :LspSymbolDefinition<CR>
 
 nnoremap <space>a :ShowPanel panel=output.exec<CR>
 " Clojure Sublimed
@@ -120,23 +131,26 @@ nnoremap  ,srd :ExecutorExecuteShell command='freeport > .repl-port && echo "$(<
 nnoremap  ,srl :ExecutorExecuteShell command='freeport > .repl-port && echo "$(<.repl-port)" && lein repl :headless :port $(<.repl-port)'<CR>
 nnoremap  ,sa :ShowPanel panel=output.exec<CR>
 
-noremap  o A:ClojureSublimedInsertNewline<CR>
-noremap  O kA:ClojureSublimedInsertNewline<CR>
+"noremap  o A:ClojureSublimedInsertNewline<CR>
+"noremap  O kA:ClojureSublimedInsertNewline<CR>
 
-noremap  ,ee :ClojureSublimedEvalPreviousForm<CR>
-noremap  ,er :ClojureSublimedEval<CR>
+nnoremap  ,ee :ClojureSublimedEvalPreviousForm<CR>
+vnoremap  ,ee :ClojureSublimedEval<CR>
+nnoremap  ,eE :ClojureSublimedEval<CR>
 nnoremap  ,eb :ClojureSublimedEvalBuffer<CR>
 nnoremap  ,ec :ClojureSublimedClearEvals<CR>
 nnoremap  ,eC :ClojureSublimedInterruptEval<CR>
 noremap  ,e; :MyClojureSublimedEvalToComment<CR>
 noremap  ,ep :ClojureSublimedEval transform='(as-> %code $ (do (require [(symbol "clojure.pprint")]) (require [(symbol "clojure.java.io")]) (with-open [w (clojure.java.io/writer "/tmp/sublimed_output.edn")] (clojure.pprint/pprint $ w)) $))'\|:OpenFile file='/tmp/sublimed_output.edn'<CR>
 "noremap  ,ep :ClojureSublimedEval transform='(as-> %code $ (do (require [(symbol "fipp.edn")]) (require [(symbol "clojure.java.io")]) $) (do (fipp.edn/pprint $ {:writer (clojure.java.io/writer "/tmp/sublimed_output.edn")}) $))'\|:OpenFile file='/tmp/sublimed_output.edn'<CR>
-noremap  ,ef :ClojureSublimedEval transform='(as-> %code $ (do (require [(symbol "clojure.java.io")]) (with-open [w (clojure.java.io/writer "/tmp/sublimed_output.edn")] (binding [*print-length* nil *out* w] (pr $))) $))'\|:OpenFile file='/tmp/sublimed_output.edn'<CR>
-noremap  ,eF :ClojureSublimedEval transform='(as-> %code $ (do (require [(symbol "clojure.java.io")]) (with-open [w (clojure.java.io/writer "/tmp/sublimed_output.edn")] (binding [*print-length* nil *out* w] (print $))) $))'\|:OpenFile file='/tmp/sublimed_output.edn'<CR>
+"noremap  ,ef :ClojureSublimedEval transform='(as-> %code $ (do (require [(symbol "clojure.java.io")]) (with-open [w (clojure.java.io/writer "/tmp/sublimed_output.edn")] (binding [*print-length* nil *out* w] (print $))) $))'\|:OpenFile file='/tmp/sublimed_output.edn'<CR>
+noremap  ,eF :ClojureSublimedEval transform='(as-> %code $ (do (require [(symbol "clojure.java.io")]) (with-open [w (clojure.java.io/writer "/tmp/sublimed_output.edn")] (binding [*print-length* nil *out* w] (pr $))) $))'\|:OpenFile file='/tmp/sublimed_output.edn'<CR>
 noremap  ,em :ClojureSublimedEval expand=true transform='(macroexpand-1 (quote %code))'<CR>
 noremap  ,eM :ClojureSublimedEval expand=true transform='(do (require [(symbol "clojure.walk")]) (clojure.walk/macroexpand-all (quote %code)))'<CR>
-nnoremap  ,pp :ClojureSublimedEvalCode code='(do (require [(symbol "ps.sc")]) (require [(symbol "sc.api")]))'\|:MyClojureSublimedEvalWithInsert insert_str='(sc.api/spyqt)'<CR>
-nnoremap  ,pP :ClojureSublimedEvalCode code='(do (require [(symbol "ps.sc")]) (require [(symbol "sc.api")]) (ps.sc/undefsc-all) (sc.api/dispose-all!) (ps.sc/drop-letsc-select!) :ps.sc/dispose)'\|:MyClojureSublimedEvalWithInsert insert_str='(sc.api/spyqt)'<CR>
+
+nnoremap  ,pp :ClojureSublimedEvalCode code='(do (require [(symbol "ps.sc")]) (require [(symbol "sc.api")]))'\|:MyClojureSublimedEvalWithInsert insert_str='(sc.api/spyqt %code)'<CR>
+nnoremap  ,pP :ClojureSublimedEvalCode code='(do (require [(symbol "ps.sc")]) (require [(symbol "sc.api")]) (ps.sc/undefsc-all) (sc.api/dispose-all!) (ps.sc/drop-letsc-select!) :ps.sc/dispose)'\|:MyClojureSublimedEvalWithInsert insert_str='(sc.api/spyqt %code)'<CR>
+vnoremap  ,pP :ClojureSublimedEvalCode code='(do (require [(symbol "ps.sc")]) (require [(symbol "sc.api")]) (ps.sc/undefsc-all) (sc.api/dispose-all!) (ps.sc/drop-letsc-select!) :ps.sc/dispose)'\|:MyClojureSublimedEvalWithInsert insert_str='(sc.api/spyqt %code)'<CR>
 noremap  ,pl :ClojureSublimedEval transform='(ps.sc/letsc! (quote %code))'<CR>
 noremap  ,pa :ClojureSublimedEval transform='(ps.sc/letsc-all (quote %code))'<CR>
 noremap  ,pd :ClojureSublimedEvalCode code='(do (ps.sc/defsc!) :ps.sc/defsc-last)'<CR>
@@ -199,3 +213,7 @@ nnoremap <space>kj :PareditJoinSexp<CR>
 nnoremap <space>kr :PareditRaiseSexp<CR>
 
 nnoremap FileType sql <cr> :MySql<CR>
+
+" Graphvizer
+nnoremap <space>gg :OpenImage<CR>
+nnoremap <space>ga :ShowPanel panel=output.graphvizer_panel<CR>

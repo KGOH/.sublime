@@ -41,10 +41,23 @@ class MyClojureSublimedEvalToCommentCommand(sublime_plugin.TextCommand):
         return cs_conn.ready(self.view.window())
 
 
-def insert_code(code, insert_str, **kwargs):
-    global_cursor_pos = kwargs["selected_region"].begin()
-    local_cursor_pos = global_cursor_pos - kwargs["eval_region"].begin()
-    with_inserted_code = code[:local_cursor_pos] + insert_str + code[local_cursor_pos:]
+def insert_code(view, code, insert_str, **kwargs):
+    topmost_form = cs_parser.topmost_form(view, kwargs["selected_region"].begin())
+    code = view.substr(topmost_form)
+
+    if kwargs["eval_region"] == topmost_form:
+        global_cursor_pos = kwargs["selected_region"]
+    else:
+        global_cursor_pos = kwargs["eval_region"]
+
+    to_wrap = sublime.Region(global_cursor_pos.begin()-topmost_form.begin(), global_cursor_pos.end()-topmost_form.begin())
+
+    transform_fn = cs_eval.format_code_fn(insert_str)
+
+    code_to_wrap = code[to_wrap.begin():to_wrap.end()]
+
+    with_inserted_code = code[:to_wrap.begin()] + transform_fn(code_to_wrap) + code[to_wrap.end():]
+
     return with_inserted_code
 
 
@@ -53,7 +66,7 @@ class MyClojureSublimedEvalWithInsertCommand(sublime_plugin.TextCommand):
     def run(self, edit, insert_str):
         view = self.view
         state = cs_common.get_state(view.window())
-        state.conn.eval(view, view.sel(), transform_fn=(lambda code, **kwargs: insert_code(code, insert_str, **kwargs)))
+        state.conn.eval(view, view.sel(), transform_fn=(lambda code, **kwargs: insert_code(view, code, insert_str, **kwargs)))
 
     def is_enabled(self):
         return cs_conn.ready(self.view.window()) and len(self.view.sel()) == 1
@@ -196,7 +209,11 @@ def my_test_report_callback(self):
                             highlight_region = found_region
 
                             h_eval = cs_eval.Eval(view, highlight_region)
-                            h_value = str(fail.obj[":actual"])
+                            try:
+                              diff = fail.obj.get(":diff")
+                              h_value = f"-{diff.obj[0]}|+{diff.obj[1]}"
+                            except Exception as e:
+                              h_value = str(fail.obj[":actual"])
                             h_eval.update("failure", h_value, region=highlight_region)
 
                 if errors := reports.obj.get(":error"):
@@ -218,7 +235,8 @@ clojure_sublimed_middleware_test = '''
 (defn append-report! [m]
   (let [t (:type m)
         stripped-m (-> m 
-                     (dissoc :type :file :expected :message))]
+                       (dissoc :type :diffs :file :expected :message)
+                       (assoc :diff (-> m :diffs first second)))]
     (when clojure.test/*report-counters*
       (dosync 
         (commute clojure.test/*report-counters* update-in [:reports (:type m)] (fnil conj []) stripped-m)))))
@@ -231,7 +249,7 @@ clojure_sublimed_middleware_test = '''
       (map #(clojure.string/includes? (.getClassName ^StackTraceElement %) file))
       #_#_first
       .getLineNumber))
-  (assoc m :actual (.getMessage actual)))
+  (assoc m :actual (.getMessage ^Exception actual)))
 
 (defmulti report :type)
 (defmethod report :default [_])
